@@ -62,7 +62,7 @@ def calc_transient_decay(time , polarity): #calculate the amplitude of the decay
         else: 
             return voltage_ripple_negative
 
-def calc_wave_amplitude(amplitude , angular_frequency , time): #calculate the amplitude of the wave at a given time, argument amplitude in volts, angular_frequency in radians / sec, time in radians, returns amplitude in volts
+def calc_wave_amplitude(amplitude , angular_frequency , time): #calculate the amplitude of the wave at a given time, argument amplitude in volts, angular_frequency in radians / sec, time in seconds, returns amplitude in volts
     current_amplitude = amplitude * math.cos(angular_frequency * time)
     return current_amplitude
 
