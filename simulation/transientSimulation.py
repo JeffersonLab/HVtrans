@@ -62,8 +62,8 @@ def calc_transient_decay(time , polarity): #calculate the amplitude of the decay
         else: 
             return voltage_ripple_negative
 
-def calc_wave_amplitude(amplitude , frequency , time): #calculate the amplitude of the wave at a given time, argument amplitude in volts, frequency in hertz, time in radians, returns amplitude in volts
-    current_amplitude = amplitude * math.cos(frequency * time)
+def calc_wave_amplitude(amplitude , angular_frequency , time): #calculate the amplitude of the wave at a given time, argument amplitude in volts, angular_frequency in radians / sec, time in radians, returns amplitude in volts
+    current_amplitude = amplitude * math.cos(angular_frequency * time)
     return current_amplitude
 
 def calc_wave_intersection(amplitude , polarity): #calculate the time in radians that the transient wave equals a given amplitude, argument amplitude in volts, returns time in radians
@@ -72,13 +72,13 @@ def calc_wave_intersection(amplitude , polarity): #calculate the time in radians
     if (polarity == 1):
         current_amplitude = transient_voltage_positive
         while(current_amplitude > (amplitude + acceptable_error)):
-            current_amplitude = calc_wave_amplitude(transient_voltage_positive , transient_angular_frequency_positive , time)
+            current_amplitude = calc_wave_amplitude(transient_voltage_positive , transient_angular_frequency_positive , (time * (1 / transient_angular_frequency_positive)))
             time = time + generation_resolution
         return time
     else: 
         current_amplitude = transient_voltage_negative
         while(current_amplitude > (amplitude + acceptable_error)):
-            current_amplitude = calc_wave_amplitude(transient_voltage_negative , transient_angular_frequency_negative , time)
+            current_amplitude = calc_wave_amplitude(transient_voltage_negative , transient_angular_frequency_negative , (time * (1 / transient_angular_frequency_negative)))
             time = time + generation_resolution
         return time
 
@@ -88,25 +88,25 @@ def calc_wave_module(offset , polarity , lower_bound_limit_radian , upper_bound_
     if (polarity == 1):
         while (time < calc_wave_intersection(nominal_voltage_positive , polarity)):
             if (lower_bound_limit_radian < global_timer <= upper_bound_limit_radian):
-                storage.append(polarity * calc_wave_amplitude(transient_voltage_positive , transient_angular_frequency_positive , time) + offset)
+                storage.append(polarity * calc_wave_amplitude(transient_voltage_positive , transient_angular_frequency_positive , (time * (1 / transient_angular_frequency_positive))) + offset)
             time = time + generation_resolution
             global_timer = global_timer + generation_resolution
         time = 0
         while (time < (num_of_phases_positive * (2 * pi))):
             if (lower_bound_limit_radian < global_timer <= upper_bound_limit_radian):
-                storage.append(calc_wave_amplitude(calc_transient_decay(time , polarity) , nominal_angular_frequency_positive, time) + offset)
+                storage.append(calc_wave_amplitude(calc_transient_decay(time , polarity) , nominal_angular_frequency_positive, (time * (1 / nominal_angular_frequency_positive))) + offset)
             time = time + generation_resolution
             global_timer = global_timer + generation_resolution
     else: 
         while (time < calc_wave_intersection(nominal_voltage_negative , polarity)):
             if (lower_bound_limit_radian < global_timer <= upper_bound_limit_radian):
-                storage.append(polarity * calc_wave_amplitude(transient_voltage_negative , transient_angular_frequency_negative , time) + offset)
+                storage.append(polarity * calc_wave_amplitude(transient_voltage_negative , transient_angular_frequency_negative , (time * (1 / transient_angular_frequency_negative))) + offset)
             time = time + generation_resolution
             global_timer = global_timer + generation_resolution
         time = 0
         while (time < (num_of_phases_negative * (2 * pi))):
             if (lower_bound_limit_radian < global_timer <= upper_bound_limit_radian):
-                storage.append(calc_wave_amplitude(calc_transient_decay(time , polarity) , nominal_angular_frequency_negative, time) + offset)
+                storage.append(calc_wave_amplitude(calc_transient_decay(time , polarity) , nominal_angular_frequency_negative, (time * (1 / nominal_angular_frequency_positive))) + offset)
             time = time + generation_resolution
             global_timer = global_timer + generation_resolution
 
