@@ -1,11 +1,11 @@
 import translationLayer
-import triggerPulse
+import triggerPulseSimulation
 import transientSimulation
 import BCMSimulation
 import detectorSimulation
 import matplotlib.pyplot as plt
 
-trigger = triggerPulse.trigger
+trigger = triggerPulseSimulation.trigger
 storage = transientSimulation.storage
 bcm = BCMSimulation.bcm
 detector = detectorSimulation.detector
@@ -29,7 +29,7 @@ def set_time_resolution(interval): #sets the time resolution for the x-axis of t
         int_num_of_seconds = int_num_of_seconds + interval
     plt.xticks(tick_location , tick_label)
 
-triggerPulse.calc_trigger()
+triggerPulseSimulation.calc_trigger()
 transientSimulation.calc_wave(lower_bound_limit_radian , upper_bound_limit_radian)
 BCMSimulation.calc_bcm()
 detectorSimulation.calc_detector()
