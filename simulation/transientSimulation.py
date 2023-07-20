@@ -15,7 +15,6 @@ transient_rt_voltage_negative = translationLayer.transient_rt_voltage_negative
 transient_frequency_positive = translationLayer.transient_frequency_positive
 transient_frequency_negative = translationLayer.transient_frequency_negative
 switching_frequency = translationLayer.switching_frequency
-time_constant = translationLayer.time_constant
 
 num_of_phases_positive = translationLayer.num_of_phases_positive
 num_of_phases_negative = translationLayer.num_of_phases_negative
@@ -41,6 +40,8 @@ timer_upper_bound = translationLayer.timer_upper_bound
 storage = [] #list used for graph generation
 
 timer = 0
+
+transient_flag = False
 
 def calc_wave_amplitude(amplitude , frequency , time): #calculate the amplitude of the wave at a given time, argument amplitude in volts, frequency in hertz, time in radians, returns amplitude in volts
     current_amplitude = amplitude * math.cos(frequency * time)

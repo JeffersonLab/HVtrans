@@ -1,11 +1,8 @@
 import translationLayer
 import transientSimulation
 
-switching_angular_frequency = translationLayer.switching_angular_frequency
 generation_resolution = translationLayer.generation_resolution
 BCM_resolution = translationLayer.BCM_resolution
-
-transientSimulation.calc_wave()
 
 storage = transientSimulation.storage
 

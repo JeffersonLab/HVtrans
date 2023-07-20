@@ -15,14 +15,11 @@ transient_frequency_positive = 98039 #positive frequency of the transient, measu
 transient_frequency_negative = 98039 #negative frequency of the transient, measured in hertz
 switching_frequency = 1920 #switching frequency of the power circuitry, measured in hertz
 
-#trigger pulse:
-#trigger_duty_cycle = 0.5
-#trigger_nominal_voltage = 5
-#trigger_latency = 0
-#trigger_rise_time = 0.001
-
-#systematic error:
-#percent_error = 0
+# trigger pulse:
+trigger_duty_cycle = 0.25 #duty cycle of the trigger pulse
+trigger_nominal_voltage = 5 #nominal voltage of the trigger pulse
+trigger_latency = 0 #latency of the trigger pulse ahead of the wave generation, measured in seconds
+trigger_rise_time = 0.00001 #period of the trigger pulse rise time, measured in seconds
 
 #general:
 generation_resolution = 0.000000001 #resolution with which the wave is generated, measured in radians

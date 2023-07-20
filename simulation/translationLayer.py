@@ -19,7 +19,6 @@ transient_rt_voltage_negative = constants.transient_rt_voltage_negative #negativ
 transient_frequency_positive = constants.transient_frequency_positive #positive transient frequency, measured in hertz
 transient_frequency_negative = constants.transient_frequency_negative #negative transient frequency, measured in hertz
 switching_frequency = constants.switching_frequency #switching frequency, measured in hertz
-time_constant = resistance * capacitance #value to determine the rate of transient decay, full decay occurs after five time constants, measured in seconds
 
 nominal_period_positive = 1 / nominal_frequency_positive #positive period of the wave, measured in seconds
 nominal_period_negative = 1 / nominal_frequency_negative #negative period of the wave, measured in seconds
@@ -33,16 +32,11 @@ transient_angular_frequency_positive = int(transient_frequency_positive * (2 * p
 transient_angular_frequency_negative = int(transient_frequency_negative * (2 * pi)) #negative angular frequency of the transient, measured in radians
 switching_angular_frequency = int(switching_frequency * (2 * pi)) #angular frequency of the switching, measured in radians
 
-#trigger pulse:
-#trigger_duty_cycle = constants.trigger_duty_cycle
-#trigger_nominal_voltage = constants.trigger_nominal_voltage
-#trigger_latency = constants.trigger_latency
-
-#trigger_rise_time = constants.trigger_rise_time
-#trigger_radian_rise_time = trigger_rise_time * nominal_angular_frequency
-
-#systematic error:
-#percent_error = constants.percent_error
+# trigger pulse:
+trigger_duty_cycle = constants.trigger_duty_cycle #duty cycle of the trigger pulse
+trigger_nominal_voltage = constants.trigger_nominal_voltage #nominal voltage of the trigger pulse 
+trigger_latency = constants.trigger_latency #latency of the trigger pulse ahead of the wave generation, measured in seconds
+trigger_rise_time = constants.trigger_rise_time #period of the trigger pulse rise time, measured in seconds
 
 #general:
 num_of_phases_positive = (switching_period - transient_period_positive) / nominal_period_positive #positive number of nominal phases per wave module
