@@ -21,6 +21,7 @@ def calc_bcm_frequency_response(frequency): #calculates a scalar multiplier for 
 
 def calc_bcm():
     num_of_calcs = calc_bcm_frequency_response(nominal_frequency_average) * num_of_seconds_bounded * bcm_sampling_rate #number of beam current monitor measurements over bounded interval
+    #num_of_calcs = num_of_seconds_bounded * bcm_sampling_rate #number of beam current monitor measurements over bounded interval
     bcm_resolution = num_of_radians_bounded / num_of_calcs #beam current monitor resolution in radians
     time = 0
     while(time < (0.88 * num_of_radians_bounded)):
