@@ -19,11 +19,11 @@ switching_frequency = 1920 #switching frequency of the power circuitry, measured
 num_of_modules = 10 #number of simulated voltage transistions
 generation_resolution = 0.1 #resolution with which the wave is generated, measured in radians
 graph_time_interval = 0.05 #interval for the x-axis on the graph, measured in seconds
-lower_bound_limit = 0.2 #horizontal lower bound limit of the graph, measured in seconds
-upper_bound_limit = 0.4 #horizontal upper bound limit of the graph, measured in seconds
+lower_bound_limit = 0.25 #horizontal lower bound limit of the graph, measured in seconds
+upper_bound_limit = 0.35 #horizontal upper bound limit of the graph, measured in seconds
 
 #trigger pulse:
-trigger_duty_cycle = 0.25 #duty cycle of the trigger pulse
+trigger_duty_cycle = 0.90 #duty cycle of the trigger pulse
 trigger_nominal_voltage = 5 #nominal voltage of the trigger pulse 
 trigger_latency = 0 #latency of the trigger pulse ahead of the wave generation, measured in seconds
 trigger_rise_time = 0.0001 #period of the trigger pulse rise time, measured in seconds
@@ -33,3 +33,6 @@ bcm_sampling_rate = 10000 #sampling rate of the beam current monitor, measured i
 
 #Detector Simulation
 detector_sampling_rate = 50000 #sampling rate of the detector, measured in samples per second
+
+#Systematic Effects
+gate_timing_offset = 0 #offset in the gate timing when measuring the deadtime

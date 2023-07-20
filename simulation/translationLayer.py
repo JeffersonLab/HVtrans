@@ -68,3 +68,6 @@ bcm_sampling_rate = constants.bcm_sampling_rate #sampling rate of the beam curre
 
 #Detector Simulation
 detector_sampling_rate = constants.detector_sampling_rate #sampling rate of the detector, measured in samples per second
+
+#Systematic Effects
+gate_timing_offset = constants.gate_timing_offset #offset in the gate timing when measuring the deadtime
