@@ -16,9 +16,9 @@ transient_rise_time_negative = 0.00000025 #negative period of the transient rise
 switching_frequency = 1920 #switching frequency of the power circuitry, measured in hertz
 
 #general:
-num_of_modules = 3 #number of simulated voltage transistions
+num_of_modules = 10 #number of simulated voltage transistions
 generation_resolution = 0.1 #resolution with which the wave is generated, measured in radians
-graph_time_interval = 0.1 #interval for the x-axis on the graph, measured in seconds
+graph_time_interval = 0.05 #interval for the x-axis on the graph, measured in seconds
 lower_bound_limit = 0.2 #horizontal lower bound limit of the graph, measured in seconds
 upper_bound_limit = 0.4 #horizontal upper bound limit of the graph, measured in seconds
 
