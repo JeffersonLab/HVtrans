@@ -2,8 +2,10 @@ import translationLayer
 
 switching_period = translationLayer.switching_period
 switching_angular_frequency = translationLayer.switching_angular_frequency
+
 num_of_modules = translationLayer.num_of_modules
 generation_resolution = translationLayer.generation_resolution
+
 trigger_duty_cycle = translationLayer.trigger_duty_cycle
 trigger_nominal_voltage = translationLayer.trigger_nominal_voltage
 trigger_latency = translationLayer.trigger_latency

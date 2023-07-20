@@ -27,8 +27,10 @@ generation_resolution = 0.000000001 #resolution with which the wave is generated
 num_of_modules = 3 #number of simulated voltage transistions
 graph_time_interval = 0.0001 #interval for the x-axis on the graph, measured in seconds
 
-BCM_resolution = 10000 #frequency with which the BCM measures the wave aka samples per second, measured in hertz
+BCM_resolution = 10000 #frequency with which the BCM measures the wave (samples per second), measured in hertz
 
 #timer
-timer_lower_bound = 0
-timer_upper_bound = 10000000000 #1604.227 for the full wave
+timer_lower_bound = 0 #lower bound to cut off the wave generation, measured in seconds
+timer_upper_bound = 10000000000 #upper bound to cut off the wave generation, measured in seconds #1604.227 for one wave module
+
+helicity_asymmetry = 0.000000001 #asymmetry from the MOLLER collisions

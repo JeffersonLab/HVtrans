@@ -3,9 +3,6 @@ from math import pi
 import constants
 
 #transient simulation:
-resistance = constants.resistance
-capacitance = constants.capacitance
-
 nominal_voltage_positve = constants.nominal_voltage_positve #positive nominal voltage of the wave, measured in volts
 nominal_voltage_negative = constants.nominal_voltage_negative #negative nominal voltage of the wave, measured in volts
 nominal_frequency_positive = constants.nominal_frequency_positive #positive wave frequency, measured in hertz
@@ -32,23 +29,22 @@ transient_angular_frequency_positive = int(transient_frequency_positive * (2 * p
 transient_angular_frequency_negative = int(transient_frequency_negative * (2 * pi)) #negative angular frequency of the transient, measured in radians
 switching_angular_frequency = int(switching_frequency * (2 * pi)) #angular frequency of the switching, measured in radians
 
-# trigger pulse:
+#trigger pulse:
 trigger_duty_cycle = constants.trigger_duty_cycle #duty cycle of the trigger pulse
 trigger_nominal_voltage = constants.trigger_nominal_voltage #nominal voltage of the trigger pulse 
 trigger_latency = constants.trigger_latency #latency of the trigger pulse ahead of the wave generation, measured in seconds
 trigger_rise_time = constants.trigger_rise_time #period of the trigger pulse rise time, measured in seconds
 
 #general:
-num_of_phases_positive = (switching_period - transient_period_positive) / nominal_period_positive #positive number of nominal phases per wave module
-num_of_phases_negative = (switching_period - transient_period_negative) / nominal_period_negative #negative number of nominal phases per wave module
 num_of_modules = constants.num_of_modules #number of wave modules
 graph_time_interval = constants.graph_time_interval #interval for the x-axis on the graph, measured in seconds
+generation_resolution = constants.generation_resolution #resolution with which the wave is generated, measured in radians
 
-generation_resolution = constants.generation_resolution
+helicity_asymmetry = constants.helicity_asymmetry #asymmetry from the MOLLER collisions
 
 #sampling:
-BCM_resolution = constants.BCM_resolution
+BCM_resolution = constants.BCM_resolution #frequency with which the BCM measures the wave aka samples per second, measured in hertz
 
 #timer:
-timer_lower_bound = constants.timer_lower_bound
-timer_upper_bound = constants.timer_upper_bound
+timer_lower_bound = constants.timer_lower_bound #lower bound to cut off the wave generation, measured in seconds
+timer_upper_bound = constants.timer_upper_bound #upper bound to cut off the wave generation, measured in seconds
