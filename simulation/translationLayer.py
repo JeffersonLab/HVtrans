@@ -65,9 +65,14 @@ trigger_radian_rise_time = trigger_rise_time * switching_angular_frequency #peri
 
 #BCM Simulation
 bcm_sampling_rate = constants.bcm_sampling_rate #sampling rate of the beam current monitor, measured in samples per second
+bcm_frequency_cutoff = constants.bcm_frequency_cutoff #beam current monitor frequency cutoff, measured in hertz
 
 #Detector Simulation
 detector_sampling_rate = constants.detector_sampling_rate #sampling rate of the detector, measured in samples per second
+detector_frequency_cutoff = constants.detector_frequency_cutoff #detector frequency cutoff, measured in hertz
 
 #Systematic Effects
 gate_timing_offset = constants.gate_timing_offset #offset in the gate timing when measuring the deadtime
+
+#constants
+e = 2.71828 #18284590452353602874713527 #euler's number constant
