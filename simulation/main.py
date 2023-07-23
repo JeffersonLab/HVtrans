@@ -21,7 +21,7 @@ generation_resolution = translationLayer.generation_resolution
 BCM_resolution = samplingSimulation.BCM_resolution
 BCM_resolution = 1 / BCM_resolution
 
-helicity_asymmetry = translationLayer.helicity_asymmetry
+delta = translationLayer.delta
 
 tick_location_detector = [] #list to store the x-axis tick locations on the detector graph
 tick_label_detector = [] #list to store the x-axis tick labels on the detector graph
@@ -52,8 +52,8 @@ while (int_num_of_microseconds_trigger < (num_of_microseconds_trigger + 1)):
 
 #asymmetry calculations:
 deadtime_asymmetry = len(deadtime_detector) - len(deadtime_BCM)
-false_asymmetry = deadtime_asymmetry
-asymmetry = helicity_asymmetry + false_asymmetry
+epsilon = deadtime_asymmetry #linear?
+asymmetry = delta + epsilon
 
 #graphs:
 fig, axs = plt.subplots(5)
@@ -62,16 +62,22 @@ fig.tight_layout()
 
 axs[0].set_xticks(tick_location_trigger)
 axs[0].set_xticklabels(tick_label_trigger)
+axs[0].set_ylabel('Voltage')
+axs[0].set_xlabel('Seconds')
 axs[0].plot(trigger)
 axs[0].set_title('Trigger Pulse')
 
 axs[1].set_xticks(tick_location_detector)
 axs[1].set_xticklabels(tick_label_detector)
+axs[1].set_ylabel('Voltage')
+axs[1].set_xlabel('Seconds')
 axs[1].plot(storage)
 axs[1].set_title('Detector')
 
 axs[2].set_xticks(tick_location_BCM)
 axs[2].set_xticklabels(tick_label_BCM)
+axs[2].set_ylabel('Voltage')
+axs[2].set_xlabel('Seconds')
 axs[2].plot(BCM_storage)
 axs[2].set_title('BCM')
 

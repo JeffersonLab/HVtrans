@@ -40,7 +40,7 @@ num_of_modules = constants.num_of_modules #number of wave modules
 graph_time_interval = constants.graph_time_interval #interval for the x-axis on the graph, measured in seconds
 generation_resolution = constants.generation_resolution #resolution with which the wave is generated, measured in radians
 
-helicity_asymmetry = constants.helicity_asymmetry #asymmetry from the MOLLER collisions
+delta = constants.delta #asymmetry from the MOLLER collisions
 
 #sampling:
 BCM_resolution = constants.BCM_resolution #frequency with which the BCM measures the wave aka samples per second, measured in hertz
