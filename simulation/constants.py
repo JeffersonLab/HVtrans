@@ -29,9 +29,15 @@ graph_time_interval = 0.0001 #interval for the x-axis on the graph, measured in 
 
 BCM_resolution = 150000 #frequency with which the BCM measures the wave (samples per second), measured in hertz
 
-#timer
+#timer:
 timer_lower_bound = 0 #lower bound to cut off the wave generation, measured in seconds
 timer_upper_bound = 10000000000 #upper bound to cut off the wave generation, measured in seconds #1604.227 for one wave module
 
-delta = 0.000001 #asymmetry from the MOLLER collisions #10^-6
+#timing gates:
+collision_asymmetry = 0.000000033 #asymmetry from the MOLLER collisions #33 * 10^-9
 
+deadtime_width_BCM = 1 #factor by which the deadtime of the BCM is widened or thinned; thinner is negative, wider is positive; 1 for normal
+deadtime_shift_BCM = 0 #factor by which the deadtime of the BCM is moved left or right; left is negative, right is positive; measured in seconds
+
+deadtime_width_detector = 1 #factor by which the deadtime of the detector is widened or thinned; thinner is negative, wider is positive; 1 for normal
+deadtime_shift_detector = 0 #factor by which the deadtime of the detector is moved left or right; left is negative, right is positive; measured in seconds

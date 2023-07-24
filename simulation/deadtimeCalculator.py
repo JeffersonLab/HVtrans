@@ -8,6 +8,9 @@ nominal_voltage_negative = constants.nominal_voltage_negative
 voltage_ripple_positive = constants.voltage_ripple_positive
 voltage_ripple_negative = constants.voltage_ripple_negative
 
+deadtime_shift_detector = translationLayer.deadtime_shift_detector
+deadtime_shift_BCM = translationLayer.deadtime_shift_BCM
+
 generation_resolution = translationLayer.generation_resolution
 BCM_resolution = samplingSimulation.BCM_resolution
 BCM_resolution = 1 / BCM_resolution #converts the resolution from measurements per seconds to seconds per measurement
@@ -28,22 +31,36 @@ def read_current_amplitude_BCM(time): #returns the current amplitude of the wave
 
 def calc_deadtime_detector(): #samples the original wave to create an array modelling its deadtime
     time1 = 0
-    while (time1 < (len(storage) * generation_resolution)):
-        if (read_current_amplitude_detector(time1) > (nominal_voltage_positive + voltage_ripple_positive)):
+    time2 = 0
+    if (deadtime_shift_detector != 0):
+        while (time1 < deadtime_shift_detector):
+            deadtime_detector.append(0)
+            time1 = time1 + generation_resolution
+
+    while ((time2 + deadtime_shift_detector) < (len(storage) * generation_resolution)):
+        if (read_current_amplitude_detector(time2) > (nominal_voltage_positive + voltage_ripple_positive)):
             deadtime_detector.append(1)
-        elif (read_current_amplitude_detector(time1) < (-nominal_voltage_negative - voltage_ripple_negative)):
+        elif (read_current_amplitude_detector(time2) < (-nominal_voltage_negative - voltage_ripple_negative)):
             deadtime_detector.append(1)
         else:
             deadtime_detector.append(0)
-        time1 = time1 + generation_resolution
+        time2 = time2 + generation_resolution
+    print('Detector Deadtime Measurement Finished')
 
 def calc_deadtime_BCM(): #samples the BCM wave to create an array modelling its deadtime
-    time2 = 0
-    while (time2 < (len(BCM_storage) * BCM_resolution)):
-        if (read_current_amplitude_BCM(time2) > (nominal_voltage_positive + voltage_ripple_positive)):
+    time3 = 0
+    time4 = 0
+    if (deadtime_shift_BCM != 0):
+        while (time3 < deadtime_shift_BCM):
+            deadtime_BCM.append(0)
+            time3 = time3 + BCM_resolution
+
+    while ((time4 + deadtime_shift_BCM) < (len(BCM_storage) * BCM_resolution)):
+        if (read_current_amplitude_BCM(time4) > (nominal_voltage_positive + voltage_ripple_positive)):
             deadtime_BCM.append(1)
-        elif (read_current_amplitude_BCM(time2) < (-nominal_voltage_negative - voltage_ripple_negative)):
+        elif (read_current_amplitude_BCM(time4) < (-nominal_voltage_negative - voltage_ripple_negative)):
             deadtime_BCM.append(1)
         else:
             deadtime_BCM.append(0)
-        time2 = time2 + BCM_resolution
+        time4 = time4 + BCM_resolution
+    print('BCM Deadtime Measurement Finished')

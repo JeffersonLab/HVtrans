@@ -25,3 +25,4 @@ def calc_wave_BCM(): #samples the original wave at a rate equal to the BCM resol
         BCM_storage.append(read_current_amplitude(time2))
         time2 = time2 + (1 / BCM_resolution)
         time1 = time1 + 1
+    print('BCM Simulation Finished')

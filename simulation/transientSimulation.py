@@ -46,7 +46,6 @@ def calc_wave_amplitude_rt(amplitude , frequency , time): #calculate the amplitu
 def calc_wave_module(offset , polarity): #calculate the current wave amplitude between switching occurances with a given resolution according to increment_resolution, argument offset measured in volts, boolean polarity 
     time2 = 0
     global timer
-    print(polarity)
     if (polarity == 1):
         while (time2 < (transient_period_positive / 2)):
             if (timer_lower_bound < timer < timer_upper_bound):
@@ -101,3 +100,4 @@ def calc_wave(): #iterate calculating wave modules according to num_of_modules
             int_nominal_wave_voltage = nominal_voltage_positive
         polarity = -polarity
         int_num_of_modules = int_num_of_modules + 1
+    print('Light Beam Generation Finished')
