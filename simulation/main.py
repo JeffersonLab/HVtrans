@@ -65,8 +65,8 @@ else:
 
 asymmetry = collision_asymmetry + epsilon
 
-print(collision_asymmetry)
-print(asymmetry)
+print('Input Asymmetry:' , collision_asymmetry)
+print('Total Asymmetry:' , asymmetry)
 
 #graphs:
 fig, axs = plt.subplots(5)
