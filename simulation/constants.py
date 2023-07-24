@@ -22,12 +22,12 @@ trigger_latency = 0 #latency of the trigger pulse ahead of the wave generation, 
 trigger_rise_time = 0.00001 #period of the trigger pulse rise time, measured in seconds
 
 #general:
-generation_resolution = 0.000000001 #resolution with which the wave is generated, measured in radians
+generation_resolution = 0.000000001 #resolution with which the wave is generated, measured in radians #1 * 10^-9
 
 num_of_modules = 2 #number of simulated voltage transistions
 graph_time_interval = 0.0001 #interval for the x-axis on the graph, measured in seconds
 
-BCM_resolution = 150000 #frequency with which the BCM measures the wave (samples per second), measured in hertz
+BCM_resolution = 150000 #frequency with which the BCM measures the wave (samples per second), measured in hertz #150000
 
 #timer:
 timer_lower_bound = 0 #lower bound to cut off the wave generation, measured in seconds
@@ -36,8 +36,8 @@ timer_upper_bound = 10000000000 #upper bound to cut off the wave generation, mea
 #timing gates:
 collision_asymmetry = 0.000000033 #asymmetry from the MOLLER collisions #33 * 10^-9
 
-deadtime_width_BCM = 1 #factor by which the deadtime of the BCM is widened or thinned; thinner is negative, wider is positive; 1 for normal
+deadtime_width_BCM = 1 #factor by which the deadtime of the BCM is widened or thinned; thinner is <1, wider is >1; 1 for normal
 deadtime_shift_BCM = 0 #factor by which the deadtime of the BCM is moved left or right; left is negative, right is positive; measured in seconds
 
-deadtime_width_detector = 1 #factor by which the deadtime of the detector is widened or thinned; thinner is negative, wider is positive; 1 for normal
+deadtime_width_detector = 1 #factor by which the deadtime of the detector is widened or thinned; thinner is <1, wider is >1; 1 for normal
 deadtime_shift_detector = 0 #factor by which the deadtime of the detector is moved left or right; left is negative, right is positive; measured in seconds

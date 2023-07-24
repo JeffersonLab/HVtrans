@@ -23,6 +23,9 @@ BCM_storage = samplingSimulation.BCM_storage
 deadtime_detector = [] #list used for the detector's deadtime graph generation
 deadtime_BCM = [] #list used for the BCM's deadtime graph generation
 
+length_deadtime_detector = [] #list used for the length of dectector's deadtime
+length_deadtime_BCM = [] #list used for the length of BCM's deadtime
+
 def read_current_amplitude_detector(time): #returns the current amplitude of the wave at a given time, parameter time in seconds
     current_amplitude = storage[int(time / generation_resolution)]
     return current_amplitude
@@ -40,8 +43,8 @@ def calc_deadtime_detector(): #samples the original wave to create an array mode
             time1 = time1 + generation_resolution
         time2 = time2 + deadtime_shift_detector
 
-    while ((time2) < (len(storage) * generation_resolution)):
-        if (deadtime_width_detector * read_current_amplitude_detector(time2) > (nominal_voltage_positive + voltage_ripple_positive)):
+    while (time2 < (len(storage) * generation_resolution)):
+        if (read_current_amplitude_detector(time2) > (nominal_voltage_positive + voltage_ripple_positive)):
             deadtime_detector.append(1)
         elif (read_current_amplitude_detector(time2) < (-nominal_voltage_negative - voltage_ripple_negative)):
             deadtime_detector.append(1)
@@ -65,7 +68,7 @@ def calc_deadtime_BCM(): #samples the BCM wave to create an array modelling its 
             time3 = time3 + BCM_resolution
         time4 = time4 + deadtime_shift_BCM
 
-    while ((time4) < (len(BCM_storage) * BCM_resolution)):
+    while (time4 < (len(BCM_storage) * BCM_resolution)):
         if (read_current_amplitude_BCM(time4) > (nominal_voltage_positive + voltage_ripple_positive)):
             deadtime_BCM.append(1)
         elif (read_current_amplitude_BCM(time4) < (-nominal_voltage_negative - voltage_ripple_negative)):
@@ -80,3 +83,25 @@ def calc_deadtime_BCM(): #samples the BCM wave to create an array modelling its 
             deadtime_BCM.append(0)
             time3 = time3 - BCM_resolution
     print('BCM Deadtime Measurement Finished')
+
+def read_current_amplitude_deadtime_detector(time): #returns the current amplitude of the wave at a given time, parameter time in seconds
+    current_amplitude = deadtime_detector[int(time / generation_resolution)]
+    return current_amplitude
+
+def read_current_amplitude_deadtime_BCM(time): #returns the current amplitude of the wave at a given time, parameter time in seconds
+    current_amplitude = deadtime_BCM[int(time / BCM_resolution)]
+    return current_amplitude
+
+def calc_length_deadtime_detector():
+    time5 = 0
+    while (time5 < (len(deadtime_detector) * generation_resolution)):
+        if(read_current_amplitude_deadtime_detector(time5) > 0):
+            length_deadtime_detector.append(0)
+        time5 = time5 + generation_resolution
+
+def calc_length_deadtime_BCM():
+    time6 = 0
+    while (time6 < (len(deadtime_BCM) * BCM_resolution)):
+        if(read_current_amplitude_deadtime_BCM(time6) > 0):
+            length_deadtime_BCM.append(0)
+        time6 = time6 + BCM_resolution

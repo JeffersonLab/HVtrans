@@ -21,7 +21,7 @@ def read_current_amplitude(time): #returns the current amplitude of the wave at 
 def calc_wave_BCM(): #samples the original wave at a rate equal to the BCM resolution to construct a new wave
     time1 = 0
     time2 = 0
-    while (time1 < num_of_measurements_BCM):
+    while (time1 < int(num_of_measurements_BCM)):
         BCM_storage.append(read_current_amplitude(time2))
         time2 = time2 + (1 / BCM_resolution)
         time1 = time1 + 1

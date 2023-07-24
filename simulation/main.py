@@ -9,12 +9,16 @@ triggerPulseSimulation.calc_trigger()
 samplingSimulation.calc_wave_BCM()
 deadtimeCalculator.calc_deadtime_detector()
 deadtimeCalculator.calc_deadtime_BCM()
+deadtimeCalculator.calc_length_deadtime_detector()
+deadtimeCalculator.calc_length_deadtime_BCM()
 
 trigger = triggerPulseSimulation.trigger
 storage = transientSimulation.storage
 BCM_storage = samplingSimulation.BCM_storage
 deadtime_detector = deadtimeCalculator.deadtime_detector
 deadtime_BCM = deadtimeCalculator.deadtime_BCM
+length_deadtime_detector = deadtimeCalculator.length_deadtime_detector
+length_deadtime_BCM = deadtimeCalculator.length_deadtime_BCM
 
 graph_time_interval = translationLayer.graph_time_interval
 generation_resolution = translationLayer.generation_resolution
@@ -52,9 +56,17 @@ while (int_num_of_microseconds_trigger < (num_of_microseconds_trigger + 1)):
     int_num_of_microseconds_trigger = int_num_of_microseconds_trigger + graph_time_interval
 
 #asymmetry calculations:
-deadtime_asymmetry = (len(deadtime_detector)) - (len(deadtime_BCM)) #asymmetry resulting from mismatched deadtimes
-epsilon = deadtime_asymmetry #systematic error
+deadtime_false_asymmetry = len(length_deadtime_detector) - len(length_deadtime_BCM) #asymmetry resulting from mismatched deadtimes
+
+if (deadtime_false_asymmetry > 0):
+    epsilon = 1 / deadtime_false_asymmetry #systematic error
+else:
+    epsilon = deadtime_false_asymmetry #systematic error
+
 asymmetry = collision_asymmetry + epsilon
+
+print(collision_asymmetry)
+print(asymmetry)
 
 #graphs:
 fig, axs = plt.subplots(5)
