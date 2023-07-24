@@ -23,8 +23,6 @@ BCM_resolution = 1 / BCM_resolution
 
 #timing gates:
 collision_asymmetry = translationLayer.collision_asymmetry
-deadtime_width_BCM = translationLayer.deadtime_width_BCM
-deadtime_width_detector = translationLayer.deadtime_width_detector
 
 tick_location_detector = [] #list to store the x-axis tick locations on the detector graph
 tick_label_detector = [] #list to store the x-axis tick labels on the detector graph
@@ -54,7 +52,7 @@ while (int_num_of_microseconds_trigger < (num_of_microseconds_trigger + 1)):
     int_num_of_microseconds_trigger = int_num_of_microseconds_trigger + graph_time_interval
 
 #asymmetry calculations:
-deadtime_asymmetry = (deadtime_width_detector * len(deadtime_detector)) - (deadtime_width_BCM * len(deadtime_BCM)) #asymmetry resulting from mismatched deadtimes
+deadtime_asymmetry = (len(deadtime_detector)) - (len(deadtime_BCM)) #asymmetry resulting from mismatched deadtimes
 epsilon = deadtime_asymmetry #systematic error
 asymmetry = collision_asymmetry + epsilon
 
