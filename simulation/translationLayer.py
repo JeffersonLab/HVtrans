@@ -47,8 +47,8 @@ generation_resolution = constants.generation_resolution #resolution with which t
 graph_time_interval = constants.graph_time_interval #interval for the x-axis on the graph, measured in seconds
 lower_bound_limit = constants.lower_bound_limit #horizontal lower bound limit of the graph, measured in seconds
 upper_bound_limit = constants.upper_bound_limit #horizontal upper bound limit of the graph, measured in seconds
-lower_bound_limit_radian = lower_bound_limit * switching_angular_frequency #0 #horizontal lower bound limit of the graph, measured in radians
-upper_bound_limit_radian = upper_bound_limit * switching_angular_frequency #2000 #horizontal upperr bound limit of the graph, measured in radians
+lower_bound_limit_radian = lower_bound_limit * nominal_angular_frequency_positive #0 #horizontal lower bound limit of the graph, measured in radians
+upper_bound_limit_radian = upper_bound_limit * nominal_angular_frequency_positive #2000 #horizontal upperr bound limit of the graph, measured in radians
 
 num_of_seconds_positive = (num_of_modules_positive * switching_period) + (num_of_modules_negative * transient_rise_time_positive) #number of seconds during positve modules
 num_of_seconds_negative = (num_of_modules_negative * switching_period) + ((num_of_modules_positive - 1) * transient_rise_time_negative) #number of seconds during negative modules
@@ -80,3 +80,5 @@ gate_timing_length = gate_timing_upper_bound - gate_timing_lower_bound
 
 #constants:
 e = 2.71828 #18284590452353602874713527 #euler's number constant
+
+#upper / lower_bound_limit_radian should use an averaged form of nominal angular frequency

@@ -58,5 +58,3 @@ axs[4].plot(deadtime)
 set_time_resolution(graph_time_interval , deadtime , 4)
 
 plt.show()
-
-#not sure if set_time_resolution() is setting an accurate time scale

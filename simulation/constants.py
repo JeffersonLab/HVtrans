@@ -16,28 +16,28 @@ transient_rise_time_negative = 0.00000025 #negative period of the transient rise
 switching_frequency = 1920 #switching frequency of the power circuitry, measured in hertz
 
 #general:
-num_of_modules = 10 #number of simulated voltage transistions
+num_of_modules = 1 #number of simulated voltage transistions
 generation_resolution = 0.1 #resolution with which the wave is generated, measured in radians
-graph_time_interval = 0.05 #interval for the x-axis on the graph, measured in seconds
-lower_bound_limit = 0.25 #horizontal lower bound limit of the graph, measured in seconds
-upper_bound_limit = 0.35 #horizontal upper bound limit of the graph, measured in seconds
+graph_time_interval = 0.0003 #interval for the x-axis on the graph, measured in seconds
+lower_bound_limit = 0 #horizontal lower bound limit of the graph, measured in seconds
+upper_bound_limit = 0.0004 #horizontal upper bound limit of the graph, measured in seconds
 
 #trigger pulse:
-trigger_duty_cycle = 0.90 #duty cycle of the trigger pulse
-trigger_nominal_voltage = 5 #nominal voltage of the trigger pulse 
+trigger_duty_cycle = 0.15 #duty cycle of the trigger pulse
+trigger_nominal_voltage = 5 #nominal voltage of the trigger pulse
 trigger_latency = 0 #latency of the trigger pulse ahead of the wave generation, measured in seconds
-trigger_rise_time = 0.0001 #period of the trigger pulse rise time, measured in seconds
+trigger_rise_time = 0.00001 #period of the trigger pulse rise time, measured in seconds
 
 #BCM Simulation:
-bcm_sampling_rate = 10000 #could approach 150ksps with modification #sampling rate of the beam current monitor, measured in samples per second
+bcm_sampling_rate = 150000 #could approach 150ksps with modification #sampling rate of the beam current monitor, measured in samples per second
 bcm_frequency_cutoff = 5000000 #beam current monitor frequency cutoff, measured in hertz
 
 #Detector Simulation:
-detector_sampling_rate = 50000 #sampling rate of the detector, measured in samples per second
+detector_sampling_rate = 300000 #sampling rate of the detector, measured in samples per second
 detector_frequency_cutoff = 5000000 #detector frequency cutoff, measured in hertz
 
 #Deadtime Simulation:
-gate_timing_lower_bound = 0.090 #expected lower bound of the deadtime, measured in seconds
-gate_timing_upper_bound = 0.095 #expected length of the deadtime, measured in seconds
-gate_timing_bound_offset = 0 #offset in the deadtime lower bound, measured in seconds
-gate_timing_length_offset = 0 #offset in the deadtime length, measured in seconds
+gate_timing_lower_bound = 0.00005 #expected lower bound of the deadtime, measured in seconds
+gate_timing_upper_bound = 0.00007 #expected upper bound of the deadtime, measured in seconds
+gate_timing_bound_offset = 0 #offset of the deadtime bounds, measured in seconds
+gate_timing_length_offset = 0 #offset of the deadtime length, measured in seconds
