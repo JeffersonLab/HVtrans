@@ -37,7 +37,7 @@ detector_sampling_rate = 50000 #sampling rate of the detector, measured in sampl
 detector_frequency_cutoff = 5000000 #detector frequency cutoff, measured in hertz
 
 #Deadtime Simulation:
-gate_timing_lower_bound = 0.30 #expected lower bound of the deadtime, measured in seconds
-gate_timing_upper_bound = 0.32 #expected length of the deadtime, measured in seconds
+gate_timing_lower_bound = 0.090 #expected lower bound of the deadtime, measured in seconds
+gate_timing_upper_bound = 0.095 #expected length of the deadtime, measured in seconds
 gate_timing_bound_offset = 0 #offset in the deadtime lower bound, measured in seconds
 gate_timing_length_offset = 0 #offset in the deadtime length, measured in seconds
