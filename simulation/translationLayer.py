@@ -72,7 +72,11 @@ detector_sampling_rate = constants.detector_sampling_rate #sampling rate of the 
 detector_frequency_cutoff = constants.detector_frequency_cutoff #detector frequency cutoff, measured in hertz
 
 #Deadtime Simulation:
-gate_timing_offset = constants.gate_timing_offset #offset in the gate timing when measuring the deadtime
+gate_timing_lower_bound = constants.gate_timing_lower_bound #expected lower bound of the deadtime, measured in seconds
+gate_timing_upper_bound = constants.gate_timing_upper_bound #expected length of the deadtime, measured in seconds
+gate_timing_bound_offset = constants.gate_timing_bound_offset #offset in the deadtime lower bound, measured in seconds
+gate_timing_length_offset = constants.gate_timing_length_offset #offset in the deadtime length, measured in seconds
+gate_timing_length = gate_timing_upper_bound - gate_timing_lower_bound
 
 #constants:
 e = 2.71828 #18284590452353602874713527 #euler's number constant
