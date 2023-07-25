@@ -3,12 +3,14 @@ import triggerPulseSimulation
 import transientSimulation
 import BCMSimulation
 import detectorSimulation
+import deadtimeSimulation
 import matplotlib.pyplot as plt
 
 trigger = triggerPulseSimulation.trigger
 storage = transientSimulation.storage
 bcm = BCMSimulation.bcm
 detector = detectorSimulation.detector
+deadtime = deadtimeSimulation.deadtime
 
 generation_resolution = translationLayer.generation_resolution
 graph_time_interval = translationLayer.graph_time_interval
@@ -35,8 +37,9 @@ triggerPulseSimulation.calc_trigger()
 transientSimulation.calc_wave(lower_bound_limit_radian , upper_bound_limit_radian)
 BCMSimulation.calc_bcm()
 detectorSimulation.calc_detector()
+deadtimeSimulation.calc_deadtime()
 
-fig, axs = plt.subplots(4)
+fig, axs = plt.subplots(5)
 fig.tight_layout()
 axs[0].set_title('Trigger Pulse')
 axs[0].plot(trigger)
@@ -50,6 +53,9 @@ set_time_resolution(graph_time_interval , bcm , 2)
 axs[3].set_title('Detector')
 axs[3].plot(detector)
 set_time_resolution(graph_time_interval , detector , 3)
+axs[4].set_title('Deadtime')
+axs[4].plot(deadtime)
+set_time_resolution(graph_time_interval , deadtime , 4)
 
 plt.show()
 

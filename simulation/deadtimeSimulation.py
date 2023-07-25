@@ -29,13 +29,21 @@ deadtime = [] #list used for deadtimeSimulation generation
 def calc_deadtime():
     time = 0 
     while(time < deadtime_rising_phase_radians):
-        storage.append(0)
+        deadtime.append(0)
         time = time + generation_resolution
     time = 0 
     while(time < deadtime_intermediate_phase_radians):
-        storage.append(1)
+        deadtime.append(1)
         time = time + generation_resolution
     time = 0 
     while(time < deadtime_trailing_phase_radians):
-        storage.append(0)
+        deadtime.append(0)
         time = time + generation_resolution
+
+import matplotlib.pyplot as plt
+
+print(num_of_seconds_bounded)
+print(((num_of_seconds_bounded - (gate_timing_lower_bound + gate_timing_length)) / num_of_seconds_bounded))
+calc_deadtime()
+plt.plot(deadtime)
+plt.show()
