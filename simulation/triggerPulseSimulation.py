@@ -8,12 +8,12 @@ trigger_duty_cycle = translationLayer.trigger_duty_cycle
 trigger_nominal_voltage = translationLayer.trigger_nominal_voltage
 trigger_latency = translationLayer.trigger_latency
 trigger_rise_time = translationLayer.trigger_rise_time
-trigger_radian_rise_time = translationLayer.trigger_radian_rise_time
+trigger_rise_time_radian = translationLayer.trigger_rise_time_radian
 
 trigger = [] #list used for triggerPulse generation
 
 def calc_rise_time_module(polarity): #calculate the current voltage of the rise time linearly, argument boolean polarity
-    num_of_steps = (trigger_radian_rise_time / generation_resolution)
+    num_of_steps = (trigger_rise_time_radian / generation_resolution)
     delta_voltage_per_step = ((2 *trigger_nominal_voltage) / num_of_steps)
     int_num_of_steps = 0
     while (int_num_of_steps < num_of_steps):
@@ -40,5 +40,4 @@ def calc_trigger(): #generate a trigger pulse according to a PWM waveform
         polarity = -polarity
         int_num_of_modules = int_num_of_modules + 1
 
-#generalize calc_rise_time_module() with transientSimulation?
 #make triggerPulse wave start from zero
