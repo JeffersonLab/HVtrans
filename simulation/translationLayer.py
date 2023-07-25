@@ -40,18 +40,23 @@ num_of_modules = constants.num_of_modules #number of wave modules
 graph_time_interval = constants.graph_time_interval #interval for the x-axis on the graph, measured in seconds
 generation_resolution = constants.generation_resolution #resolution with which the wave is generated, measured in radians
 
-#sampling:
-BCM_resolution = constants.BCM_resolution #frequency with which the BCM measures the wave aka samples per second, measured in hertz
-
 #timer:
 timer_lower_bound = constants.timer_lower_bound #lower bound to cut off the wave generation, measured in seconds
 timer_upper_bound = constants.timer_upper_bound #upper bound to cut off the wave generation, measured in seconds
 
-#timing gates:
-collision_asymmetry = constants.collision_asymmetry #asymmetry from the Moller collisions
+#sampling:
+BCM_resolution = constants.BCM_resolution #frequency with which the BCM measures the wave aka samples per second, measured in hertz
 
+#timing gates:
 deadtime_width_BCM = constants.deadtime_width_BCM #factor by which the deadtime of the BCM is widened or thinned; thinner is negative, wider is positive; 1 for normal
 deadtime_shift_BCM = constants.deadtime_shift_BCM #factor by which the deadtime of the BCM is moved left or right; left is negative, right is positive; measured in seconds
 
 deadtime_width_detector = constants.deadtime_width_detector #factor by which the deadtime of the detector is widened or thinned; thinner is negative, wider is positive; 1 for normal
 deadtime_shift_detector = constants.deadtime_shift_detector #factor by which the deadtime of the detector is moved left or right; left is negative, right is positive; measured in seconds
+
+#asymmetry:
+collision_asymmetry = constants.collision_asymmetry #asymmetry from the Moller collisions
+
+BCM_min_bandpass = constants.BCM_min_bandpass #should be the same as the BCM's current maximum bandpass
+BCM_bandpass_interval = constants.BCM_bandpass_interval #interval by which the bandpass of the BCM increases during systematic error calculations
+BCM_max_bandpass = constants.BCM_max_bandpass #should be the theoretical maximum for the BCM's bandpass

@@ -27,17 +27,23 @@ generation_resolution = 0.000000001 #resolution with which the wave is generated
 num_of_modules = 2 #number of simulated voltage transistions
 graph_time_interval = 0.0001 #interval for the x-axis on the graph, measured in seconds
 
-BCM_resolution = 150000 #frequency with which the BCM measures the wave (samples per second), measured in hertz #150000
-
 #timer:
 timer_lower_bound = 0 #lower bound to cut off the wave generation, measured in seconds
 timer_upper_bound = 10000000000 #upper bound to cut off the wave generation, measured in seconds #1604.227 for one wave module
 
-#timing gates:
-collision_asymmetry = 0.000000033 #asymmetry from the MOLLER collisions #33 * 10^-9
+#sampling:
+BCM_resolution = 150000 #frequency with which the BCM measures the wave (samples per second), measured in hertz #150000
 
+#timing gates:
 deadtime_width_BCM = 1 #factor by which the deadtime of the BCM is widened or thinned; thinner is <1, wider is >1; 1 for normal
 deadtime_shift_BCM = 0 #factor by which the deadtime of the BCM is moved left or right; left is negative, right is positive; measured in seconds
 
 deadtime_width_detector = 1 #factor by which the deadtime of the detector is widened or thinned; thinner is <1, wider is >1; 1 for normal
 deadtime_shift_detector = 0 #factor by which the deadtime of the detector is moved left or right; left is negative, right is positive; measured in seconds
+
+#asymmetry:
+collision_asymmetry = 0.000000033 #asymmetry from the MOLLER collisions #33 * 10^-9
+
+BCM_min_bandpass = 150000 #should be the same as the BCM's current maximum bandpass
+BCM_bandpass_interval = 10000 #interval by which the bandpass of the BCM increases during systematic error calculations
+BCM_max_bandpass = 1000000 #should be the theoretical maximum for the BCM's bandpass
