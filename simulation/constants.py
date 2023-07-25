@@ -28,13 +28,13 @@ trigger_nominal_voltage = 5 #nominal voltage of the trigger pulse
 trigger_latency = 0 #latency of the trigger pulse ahead of the wave generation, measured in seconds
 trigger_rise_time = 0.0001 #period of the trigger pulse rise time, measured in seconds
 
-#BCM Simulation
+#BCM Simulation:
 bcm_sampling_rate = 10000 #could approach 150ksps with modification #sampling rate of the beam current monitor, measured in samples per second
 bcm_frequency_cutoff = 5000000 #beam current monitor frequency cutoff, measured in hertz
 
-#Detector Simulation
+#Detector Simulation:
 detector_sampling_rate = 50000 #sampling rate of the detector, measured in samples per second
 detector_frequency_cutoff = 5000000 #detector frequency cutoff, measured in hertz
 
-#Systematic Effects
+#Deadtime Simulation:
 gate_timing_offset = 0 #offset in the gate timing when measuring the deadtime
