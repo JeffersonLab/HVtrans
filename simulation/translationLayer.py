@@ -33,8 +33,9 @@ switching_angular_frequency = int(switching_frequency * (2 * pi)) #angular frequ
 
 transient_rise_time_positive = constants.transient_rise_time_positive #positve transient rise time, measured in seconds
 transient_rise_time_negative = constants.transient_rise_time_negative #negative transient rise time, measured in seconds
-transient_rise_time_radian_positive = transient_rise_time_positive * nominal_angular_frequency_positive #positive transient rise time, converted to radians according to the nominal angular frequency
-transient_rise_time_radian_negative = transient_rise_time_negative * nominal_angular_frequency_negative #negative transient rise time, converted to radians according to the nominal angular frequency
+transient_rise_time_radian_positive = transient_rise_time_positive * transient_angular_frequency_positive #positive transient rise time, converted to radians according to the nominal angular frequency
+transient_rise_time_radian_negative = transient_rise_time_negative * transient_angular_frequency_negative #negative transient rise time, converted to radians according to the nominal angular frequency
+switching_period_radian = switching_period * switching_angular_frequency
 
 #general:
 num_of_phases_positive = (switching_period - transient_period_positive) / nominal_period_positive #positive number of nominal phases per wave module
@@ -80,5 +81,3 @@ gate_timing_length = gate_timing_upper_bound - gate_timing_lower_bound
 
 #constants:
 e = 2.71828 #18284590452353602874713527 #euler's number constant
-
-#upper / lower_bound_limit_radian should use an averaged form of nominal angular frequency

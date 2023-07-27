@@ -151,6 +151,5 @@ def read_current_amplitude(radian_location): #returns the current amplitude of t
     current_amplitude = storage[int(radian_location / generation_resolution)]
     return current_amplitude
 
-#change num_of_phase * 2 * pi conditional to fix uneven compression
-#same problem with transient frequency, compression
-#weird spike following first transient
+#add interpolation function to uncompress calc_wave() due to 2pi conditional limit
+#fix spike contained within first transient

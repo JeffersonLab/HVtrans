@@ -18,15 +18,15 @@ switching_frequency = 1920 #switching frequency of the power circuitry, measured
 #general:
 num_of_modules = 3 #number of simulated voltage transistions
 generation_resolution = 0.1 #resolution with which the wave is generated, measured in radians
-graph_time_interval = 0.0003 #interval for the x-axis on the graph, measured in seconds
+graph_time_interval = 0.0001 #interval for the x-axis on the graph, measured in seconds
 lower_bound_limit = 0 #horizontal lower bound limit of the graph, measured in seconds
 upper_bound_limit = 0.0012 #horizontal upper bound limit of the graph, measured in seconds
 
 #trigger pulse:
-trigger_duty_cycle = 0.15 #duty cycle of the trigger pulse, measured in decimal from zero to one
+trigger_duty_cycle = 0.5 #duty cycle of the trigger pulse, measured in decimal from zero to one
 trigger_nominal_voltage = 5 #nominal voltage of the trigger pulse
 trigger_latency = 0 #latency of the trigger pulse ahead of the wave generation, measured in seconds
-trigger_rise_time = 0.00001 #period of the trigger pulse rise time, measured in seconds
+trigger_rise_time = 0.00005 #period of the trigger pulse rise time, measured in seconds
 
 #BCM Simulation:
 bcm_sampling_rate = 150000 #could approach 150ksps with modification #sampling rate of the beam current monitor, measured in samples per second
