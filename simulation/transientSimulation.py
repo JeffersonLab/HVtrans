@@ -100,4 +100,3 @@ def calc_wave(): #iterate calculating wave modules according to num_of_modules
             int_nominal_wave_voltage = nominal_voltage_positive
         polarity = -polarity
         int_num_of_modules = int_num_of_modules + 1
-    print('Light Beam Generation Finished')

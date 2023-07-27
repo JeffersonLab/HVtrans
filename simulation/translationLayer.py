@@ -5,7 +5,7 @@ import constants
 #transient simulation:
 nominal_voltage_positve = constants.nominal_voltage_positve #positive nominal voltage of the wave, measured in volts
 nominal_voltage_negative = constants.nominal_voltage_negative #negative nominal voltage of the wave, measured in volts
-nominal_frequency_positive = constants.nominal_frequency_positive #positive wave frequency, measured in hertz
+nominal_frequency_positive = constants.nominal_frequency_positive + constants.helicity_asymmetry #positive wave frequency, measured in hertz #helicity asymmetry added
 nominal_frequency_negative = constants.nominal_frequency_negative #negative wave frequency, measured in hertz
 voltage_ripple_positive = constants.voltage_ripple_positive #positive voltage ripple in the wave at nominal voltage, measured in volts
 voltage_ripple_negative = constants.voltage_ripple_negative #negative voltage ripple in the wave at nominal voltage, measured in volts
@@ -13,7 +13,7 @@ transient_voltage_positive = constants.transient_voltage_positive #positive tran
 transient_voltage_negative = constants.transient_voltage_negative #negative transient voltage of the wave, measured in volts
 transient_rt_voltage_positive = constants.transient_rt_voltage_positive #positive voltage of the rise time for the transient of the wave, measured in volts
 transient_rt_voltage_negative = constants.transient_rt_voltage_negative #negative voltage of the rise time for the transient of the wave, measured in volts
-transient_frequency_positive = constants.transient_frequency_positive #positive transient frequency, measured in hertz
+transient_frequency_positive = constants.transient_frequency_positive + constants.helicity_asymmetry #positive transient frequency, measured in hertz #helicity asymmetry added
 transient_frequency_negative = constants.transient_frequency_negative #negative transient frequency, measured in hertz
 switching_frequency = constants.switching_frequency #switching frequency, measured in hertz
 
@@ -45,7 +45,7 @@ timer_lower_bound = constants.timer_lower_bound #lower bound to cut off the wave
 timer_upper_bound = constants.timer_upper_bound #upper bound to cut off the wave generation, measured in seconds
 
 #sampling:
-BCM_resolution = constants.BCM_resolution #frequency with which the BCM measures the wave aka samples per second, measured in hertz
+BCM_resolution = 1 / constants.BCM_resolution #frequency with which the BCM measures the wave aka samples per second, measured in hertz
 
 #timing gates:
 deadtime_width_BCM = constants.deadtime_width_BCM #factor by which the deadtime of the BCM is widened or thinned; thinner is negative, wider is positive; 1 for normal
@@ -55,7 +55,7 @@ deadtime_width_detector = constants.deadtime_width_detector #factor by which the
 deadtime_shift_detector = constants.deadtime_shift_detector #factor by which the deadtime of the detector is moved left or right; left is negative, right is positive; measured in seconds
 
 #asymmetry:
-collision_asymmetry = constants.collision_asymmetry #asymmetry from the Moller collisions
+helicity_asymmetry = constants.helicity_asymmetry #asymmetry from the Moller collisions
 
 BCM_min_bandpass = constants.BCM_min_bandpass #should be the same as the BCM's current maximum bandpass
 BCM_bandpass_interval = constants.BCM_bandpass_interval #interval by which the bandpass of the BCM increases during systematic error calculations

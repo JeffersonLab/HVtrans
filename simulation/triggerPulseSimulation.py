@@ -40,4 +40,3 @@ def calc_trigger(): #generate a trigger pulse according to a PWM waveform
                 time = time + (generation_resolution)
         polarity = -polarity
         int_num_of_modules = int_num_of_modules + 1
-    print('Trigger Pulse Generation Finished')
