@@ -17,8 +17,8 @@ asymmetry = [] #list used for asymmetryCalculation
 
 def calc_asymmetry(lower_bound , upper_bound , interval): #add a variable_to_vary and/or location_to_measure as potential parameters
     location_to_measure_radian = 5 #fixed location to measure in radians
-    translationLayer.generation_resolution = lower_bound #set variable to iterate
-    while (translationLayer.generation_resolution < upper_bound): #set variable to iterate
+    translationLayer.bcm_sampling_rate = lower_bound #set variable to iterate
+    while (translationLayer.bcm_sampling_rate < upper_bound): #set variable to iterate
         transientSimulation.calc_wave(lower_bound_limit_radian , upper_bound_limit_radian)
         BCMSimulation.calc_bcm()
         detectorSimulation.calc_detector()
@@ -32,4 +32,4 @@ def calc_asymmetry(lower_bound , upper_bound , interval): #add a variable_to_var
         total_asymmetry = (d_plus_div_b_plus - d_minus_div_b_minus) / (d_plus_div_b_plus + d_minus_div_b_minus)
         asymmetry.append(total_asymmetry)
 
-        translationLayer.generation_resolution += interval #set variable to iterate
+        translationLayer.bcm_sampling_rate += interval #set variable to iterate

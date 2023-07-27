@@ -18,7 +18,7 @@ switching_frequency = 1920 #switching frequency of the power circuitry, measured
 #general:
 num_of_modules = 3 #number of simulated voltage transistions
 generation_resolution = 0.1 #resolution with which the wave is generated, measured in radians
-graph_time_interval = 0.0001 #interval for the x-axis on the graph, measured in seconds
+graph_time_interval = 0.0003 #interval for the x-axis on the graph, measured in seconds
 lower_bound_limit = 0 #horizontal lower bound limit of the graph, measured in seconds
 upper_bound_limit = 0.0012 #horizontal upper bound limit of the graph, measured in seconds
 
