@@ -41,3 +41,6 @@ gate_timing_lower_bound = 0.00005 #expected lower bound of the deadtime, measure
 gate_timing_upper_bound = 0.00007 #expected upper bound of the deadtime, measured in seconds
 gate_timing_bound_offset = 0 #offset of the deadtime bounds, measured in seconds
 gate_timing_length_offset = 0 #offset of the deadtime length, measured in seconds
+
+#asymmetry
+input_asymmetry = 0 #asymmetry due to physics properties

@@ -79,5 +79,8 @@ gate_timing_bound_offset = constants.gate_timing_bound_offset #offset in the dea
 gate_timing_length_offset = constants.gate_timing_length_offset #offset in the deadtime length, measured in seconds
 gate_timing_length = gate_timing_upper_bound - gate_timing_lower_bound
 
+#asymmetry
+input_asymmetry = constants.input_asymmetry
+
 #constants:
 e = 2.71828 #18284590452353602874713527 #euler's number constant

@@ -26,3 +26,8 @@ def calc_bcm():
     while(time < int(num_of_radians_bounded)):
         bcm.append(transientSimulation.read_current_amplitude(time))
         time = time + bcm_resolution
+
+def read_current_amplitude(radian_location): #returns the current amplitude of the bcm at a given radian location, parameter radian_location in radians
+    bcm_resolution = num_of_radians_bounded / len(bcm)
+    current_amplitude = bcm[int(radian_location / bcm_resolution)]
+    return current_amplitude

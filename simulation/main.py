@@ -4,6 +4,7 @@ import transientSimulation
 import BCMSimulation
 import detectorSimulation
 import deadtimeSimulation
+import asymmetryCalculation
 import matplotlib.pyplot as plt
 
 trigger = triggerPulseSimulation.trigger
@@ -11,6 +12,7 @@ storage = transientSimulation.storage
 bcm = BCMSimulation.bcm
 detector = detectorSimulation.detector
 deadtime = deadtimeSimulation.deadtime
+asymmetry = asymmetryCalculation.asymmetry
 
 generation_resolution = translationLayer.generation_resolution
 graph_time_interval = translationLayer.graph_time_interval
@@ -19,6 +21,9 @@ upper_bound_limit = translationLayer.upper_bound_limit
 num_of_seconds_bounded = translationLayer.num_of_seconds_bounded
 lower_bound_limit_radian = translationLayer.lower_bound_limit_radian
 upper_bound_limit_radian = translationLayer.upper_bound_limit_radian
+
+physics_asymmetry = translationLayer.input_asymmetry
+#systematic_asymmetry = total_asymmetry - physics_asymmetry
 
 def set_time_resolution(interval , array , identifier): #sets the time resolution for the x-axis of the graph in seconds, parameters interval in seconds, array in format list, and identifier in scalar
     tick_location = [] #list to store the tick locations on the graph
@@ -66,5 +71,8 @@ axs[4].set_ylabel('State')
 axs[4].set_xlabel('Seconds')
 axs[4].plot(deadtime)
 set_time_resolution(graph_time_interval , deadtime , 4)
+
+asymmetryCalculation.calc_asymmetry(0.1 , 10 , 0.1)
+plt.plot(asymmetry)
 
 plt.show()
