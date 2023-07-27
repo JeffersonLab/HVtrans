@@ -39,6 +39,10 @@ def calc_wave_amplitude(amplitude , frequency , time): #calculate the amplitude 
     current_amplitude = amplitude * math.cos(frequency * time)
     return current_amplitude
 
+def calc_wave_amplitude_nominal(amplitude , frequency , time): #calculate the amplitude of the wave at a given time, argument amplitude in volts, frequency in hertz, time in radians, returns amplitude in volts
+    current_amplitude = amplitude * math.cos(frequency * time + (pi / 2))
+    return current_amplitude
+
 def calc_wave_amplitude_rt(amplitude , frequency , time): #calculate the amplitude of the wave at a given time, argument amplitude in volts, frequency in hertz, time in radians, returns amplitude in volts
     current_amplitude = -amplitude * math.cos(frequency * time + (pi / 2))
     return current_amplitude
@@ -55,7 +59,7 @@ def calc_wave_module(offset , polarity): #calculate the current wave amplitude b
         time3 = 0
         while (time3 < (switching_period - transient_period_positive)):
             if (timer_lower_bound < timer < timer_upper_bound):
-                storage.append(calc_wave_amplitude(voltage_ripple_positive , nominal_angular_frequency_positive , time3) + offset)
+                storage.append(calc_wave_amplitude_nominal(voltage_ripple_positive , nominal_angular_frequency_positive , time3) + offset)
             time3 = time3 + generation_resolution
             timer = timer + generation_resolution
     else:
@@ -67,7 +71,7 @@ def calc_wave_module(offset , polarity): #calculate the current wave amplitude b
         time3 = 0
         while (time3 < (switching_period - transient_period_negative)): 
             if (timer_lower_bound < timer < timer_upper_bound):
-                storage.append(calc_wave_amplitude(voltage_ripple_negative , nominal_angular_frequency_negative , time3) + offset)
+                storage.append(calc_wave_amplitude_nominal(voltage_ripple_negative , nominal_angular_frequency_negative , time3) + offset)
             time3 = time3 + generation_resolution
             timer = timer + generation_resolution
 
