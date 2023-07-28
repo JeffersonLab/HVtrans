@@ -5,15 +5,15 @@ import constants
 #transient simulation:
 nominal_voltage_positve = constants.nominal_voltage_positve #positive nominal voltage of the wave, measured in volts
 nominal_voltage_negative = constants.nominal_voltage_negative #negative nominal voltage of the wave, measured in volts
-nominal_frequency_positive = constants.nominal_frequency_positive + constants.helicity_asymmetry #positive wave frequency, measured in hertz #helicity asymmetry added
+nominal_frequency_positive = constants.nominal_frequency_positive #positive wave frequency, measured in hertz #helicity asymmetry added
 nominal_frequency_negative = constants.nominal_frequency_negative #negative wave frequency, measured in hertz
 voltage_ripple_positive = constants.voltage_ripple_positive #positive voltage ripple in the wave at nominal voltage, measured in volts
 voltage_ripple_negative = constants.voltage_ripple_negative #negative voltage ripple in the wave at nominal voltage, measured in volts
-transient_voltage_positive = constants.transient_voltage_positive #positive transient voltage of the wave, measured in volts
+transient_voltage_positive = constants.transient_voltage_positive + constants.helicity_asymmetry #positive transient voltage of the wave, measured in volts
 transient_voltage_negative = constants.transient_voltage_negative #negative transient voltage of the wave, measured in volts
 transient_rt_voltage_positive = constants.transient_rt_voltage_positive #positive voltage of the rise time for the transient of the wave, measured in volts
 transient_rt_voltage_negative = constants.transient_rt_voltage_negative #negative voltage of the rise time for the transient of the wave, measured in volts
-transient_frequency_positive = constants.transient_frequency_positive + constants.helicity_asymmetry #positive transient frequency, measured in hertz #helicity asymmetry added
+transient_frequency_positive = constants.transient_frequency_positive #positive transient frequency, measured in hertz #helicity asymmetry added
 transient_frequency_negative = constants.transient_frequency_negative #negative transient frequency, measured in hertz
 switching_frequency = constants.switching_frequency #switching frequency, measured in hertz
 

@@ -20,17 +20,17 @@ trigger_latency = 0 #latency of the trigger pulse ahead of the wave generation, 
 trigger_rise_time = 0.00001 #period of the trigger pulse rise time, measured in seconds
 
 #general:
-generation_resolution = 0.000000001 #resolution with which the wave is generated, measured in radians #1 * 10^-9
+generation_resolution = 0.0000000001 #resolution with which the wave is generated, measured in radians #1 * 10^-9
 
 num_of_modules = 2 #number of simulated voltage transistions
 graph_time_interval = 0.0001 #interval for the x-axis on the graph, measured in seconds
 
 #timer:
 timer_lower_bound = 0 #lower bound to cut off the wave generation, measured in seconds
-timer_upper_bound = 10000000000 #upper bound to cut off the wave generation, measured in seconds #1604.227 for one wave module
+timer_upper_bound = 100000000000000000000000000000 #upper bound to cut off the wave generation, measured in seconds #1604.227 for one wave module
 
 #sampling:
-BCM_resolution = 1000000000 #frequency with which the BCM measures the wave (samples per second), measured in hertz #150000
+BCM_resolution = 10000000000 #frequency with which the BCM measures the wave (samples per second), measured in hertz #150000
 
 #timing gates:
 deadtime_width_BCM = 1 #factor by which the deadtime of the BCM is widened or thinned; thinner is <1, wider is >1; 1 for normal

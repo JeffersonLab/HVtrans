@@ -34,13 +34,13 @@ seconds_in_wave = len(storage) * generation_resolution #number of seconds in the
 
 import asymmetryCalculator
 
-asymmetryCalculator.BCM_periods_calculator()
-asymmetryCalculator.detector_periods_calculator()
+asymmetryCalculator.BCM_transient_voltage_calculator()
+asymmetryCalculator.detector_transient_voltage_calculator()
 
-total_asymmetry = asymmetryCalculator.calc_total_asymmetry()
-systematic_error = total_asymmetry - helicity_asymmetry
+systematic_error_maybe = asymmetryCalculator.calc_total_asymmetry()
+total_asymmetry = systematic_error_maybe + helicity_asymmetry
 
-print(systematic_error)
+print(total_asymmetry)
 
 #x-axis labeling:
 tick_location_trigger = [] #list to store the x-axis tick locations on the trigger graph
