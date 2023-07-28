@@ -43,4 +43,4 @@ gate_timing_bound_offset = 0 #offset of the deadtime bounds, measured in seconds
 gate_timing_length_offset = 0 #offset of the deadtime length, measured in seconds
 
 #asymmetry
-input_asymmetry = 0 #asymmetry due to physics properties
+input_asymmetry = 0.1 #asymmetry due to physics properties

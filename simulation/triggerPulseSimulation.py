@@ -1,8 +1,5 @@
-import math
-from math import pi
 import translationLayer
 
-switching_period = translationLayer.switching_period
 switching_period_radian = translationLayer.switching_period_radian
 num_of_modules = translationLayer.num_of_modules
 generation_resolution = translationLayer.generation_resolution

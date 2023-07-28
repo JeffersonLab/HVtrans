@@ -44,6 +44,7 @@ num_of_phases = num_of_phases_positive + num_of_phases_negative #total number of
 num_of_modules = constants.num_of_modules #number of wave modules
 num_of_modules_positive = round(num_of_modules / 2) #number of positive modules
 num_of_modules_negative = int(num_of_modules / 2) #number of negative modules
+num_of_radian_per_module = switching_period * switching_angular_frequency
 generation_resolution = constants.generation_resolution #resolution with which the wave module is generated, measured in radians
 graph_time_interval = constants.graph_time_interval #interval for the x-axis on the graph, measured in seconds
 lower_bound_limit = constants.lower_bound_limit #horizontal lower bound limit of the graph, measured in seconds
