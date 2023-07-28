@@ -30,7 +30,7 @@ timer_lower_bound = 0 #lower bound to cut off the wave generation, measured in s
 timer_upper_bound = 100000000000000000000000000000 #upper bound to cut off the wave generation, measured in seconds #1604.227 for one wave module
 
 #sampling:
-BCM_resolution = 10000000000 #frequency with which the BCM measures the wave (samples per second), measured in hertz #150000
+BCM_resolution = 150000 #frequency with which the BCM measures the wave (samples per second), measured in hertz #150000
 
 #timing gates:
 deadtime_width_BCM = 1 #factor by which the deadtime of the BCM is widened or thinned; thinner is <1, wider is >1; 1 for normal
@@ -42,6 +42,5 @@ deadtime_shift_detector = 0 #factor by which the deadtime of the detector is mov
 #asymmetry:
 helicity_asymmetry = 0.000000033 #asymmetry from the MOLLER collisions #33 * 10^-9
 
-BCM_min_bandpass = 150000 #should be the same as the BCM's current maximum bandpass
-BCM_bandpass_interval = 10000 #interval by which the bandpass of the BCM increases during systematic error calculations
+BCM_bandpass_interval = 100000 #interval by which the bandpass of the BCM increases during systematic error calculations
 BCM_max_bandpass = 1000000 #should be the theoretical maximum for the BCM's bandpass

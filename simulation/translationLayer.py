@@ -57,6 +57,5 @@ deadtime_shift_detector = constants.deadtime_shift_detector #factor by which the
 #asymmetry:
 helicity_asymmetry = constants.helicity_asymmetry #asymmetry from the Moller collisions
 
-BCM_min_bandpass = constants.BCM_min_bandpass #should be the same as the BCM's current maximum bandpass
 BCM_bandpass_interval = constants.BCM_bandpass_interval #interval by which the bandpass of the BCM increases during systematic error calculations
 BCM_max_bandpass = constants.BCM_max_bandpass #should be the theoretical maximum for the BCM's bandpass
