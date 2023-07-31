@@ -1,4 +1,3 @@
-import math
 from math import pi
 import constants
 
@@ -11,8 +10,8 @@ voltage_ripple_positive = constants.voltage_ripple_positive #positive voltage ri
 voltage_ripple_negative = constants.voltage_ripple_negative #negative voltage ripple in the wave at nominal voltage, measured in volts
 transient_voltage_positive = constants.transient_voltage_positive + constants.helicity_asymmetry #positive transient voltage of the wave, measured in volts
 transient_voltage_negative = constants.transient_voltage_negative #negative transient voltage of the wave, measured in volts
-transient_rt_voltage_positive = constants.transient_rt_voltage_positive #positive voltage of the rise time for the transient of the wave, measured in volts
-transient_rt_voltage_negative = constants.transient_rt_voltage_negative #negative voltage of the rise time for the transient of the wave, measured in volts
+transient_rt_voltage_positive = transient_voltage_positive + (2 * nominal_voltage_positve) #positive voltage of the rise time for the transient of the wave, measured in volts
+transient_rt_voltage_negative = transient_voltage_negative + (2 * nominal_voltage_negative) #negative voltage of the rise time for the transient of the wave, measured in volts
 transient_frequency_positive = constants.transient_frequency_positive #positive transient frequency, measured in hertz #helicity asymmetry added
 transient_frequency_negative = constants.transient_frequency_negative #negative transient frequency, measured in hertz
 switching_frequency = constants.switching_frequency #switching frequency, measured in hertz
@@ -30,10 +29,9 @@ transient_angular_frequency_negative = int(transient_frequency_negative * (2 * p
 switching_angular_frequency = int(switching_frequency * (2 * pi)) #angular frequency of the switching, measured in radians
 
 #trigger pulse:
-trigger_duty_cycle = constants.trigger_duty_cycle #duty cycle of the trigger pulse
 trigger_nominal_voltage = constants.trigger_nominal_voltage #nominal voltage of the trigger pulse 
 trigger_latency = constants.trigger_latency #latency of the trigger pulse ahead of the wave generation, measured in seconds
-trigger_rise_time = constants.trigger_rise_time #period of the trigger pulse rise time, measured in seconds
+trigger_rise_time = transient_period_positive #period of the trigger pulse rise time, measured in seconds
 
 #general:
 num_of_modules = constants.num_of_modules #number of wave modules
@@ -57,5 +55,5 @@ deadtime_shift_detector = constants.deadtime_shift_detector #factor by which the
 #asymmetry:
 helicity_asymmetry = constants.helicity_asymmetry #asymmetry from the Moller collisions
 
-BCM_bandpass_interval = constants.BCM_bandpass_interval #interval by which the bandpass of the BCM increases during systematic error calculations
-BCM_max_bandpass = constants.BCM_max_bandpass #should be the theoretical maximum for the BCM's bandpass
+BCM_sampling_rate_interval = constants.BCM_sampling_rate_interval #interval by which the bandpass of the BCM increases during systematic error calculations
+BCM_max_sampling_rate = constants.BCM_max_sampling_rate #should be the theoretical maximum for the BCM's bandpass

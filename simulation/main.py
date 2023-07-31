@@ -26,21 +26,21 @@ deadtime_BCM = deadtimeCalculator.deadtime_BCM
 
 import asymmetryCalculator
 
-BCM_bandpass_interval = translationLayer.BCM_bandpass_interval
-BCM_max_bandpass = translationLayer.BCM_max_bandpass
+BCM_sampling_rate_interval = translationLayer.BCM_sampling_rate_interval
+BCM_max_sampling_rate = translationLayer.BCM_max_sampling_rate
 
 total_asymmetry = []
-BCM_bandpass = 1 / BCM_resolution
-while (BCM_bandpass < BCM_max_bandpass):
-    samplingSimulation.calc_wave_BCM((1 / BCM_bandpass))
-    asymmetryCalculator.BCM_transient_voltage_calculator((1 / BCM_bandpass) , BCM_storage)
+BCM_sampling_rate = 1 / BCM_resolution
+while (BCM_sampling_rate < BCM_max_sampling_rate):
+    samplingSimulation.calc_wave_BCM((1 / BCM_sampling_rate))
+    asymmetryCalculator.BCM_transient_voltage_calculator((1 / BCM_sampling_rate) , BCM_storage)
     asymmetryCalculator.detector_transient_voltage_calculator()
 
-    systematic_error_maybe = asymmetryCalculator.calc_total_asymmetry()
-    total_asymmetry.append(systematic_error_maybe + helicity_asymmetry)
+    systematic_error = asymmetryCalculator.calc_total_asymmetry()
+    total_asymmetry.append(systematic_error + helicity_asymmetry)
 
     BCM_storage.clear()
-    BCM_bandpass = BCM_bandpass + BCM_bandpass_interval
+    BCM_sampling_rate = BCM_sampling_rate + BCM_sampling_rate_interval
 
 BCM_storage.clear()
 
@@ -51,15 +51,6 @@ deadtimeCalculator.calc_deadtime_BCM()
 print('Deadtime Simulation Finished')
 
 #x-axis labeling:
-tick_location_trigger = [] #list to store the x-axis tick locations on the trigger graph
-tick_label_trigger = [] #list to store the x-axis tick labels on the trigger graph
-num_of_microseconds_trigger = (len(trigger) * generation_resolution)
-int_num_of_microseconds_trigger = 0
-while (int_num_of_microseconds_trigger < (num_of_microseconds_trigger + 1)):
-    tick_location_trigger.append(int_num_of_microseconds_trigger * (len(trigger) / num_of_microseconds_trigger))
-    tick_label_trigger.append(round(int_num_of_microseconds_trigger , 4))
-    int_num_of_microseconds_trigger = int_num_of_microseconds_trigger + graph_time_interval
-
 tick_location_detector = [] #list to store the x-axis tick locations on the detector graph
 tick_label_detector = [] #list to store the x-axis tick labels on the detector graph
 num_of_microseconds_detector = (len(storage) * generation_resolution)
@@ -84,50 +75,49 @@ num_of_samples_per_second = len(total_asymmetry)
 int_num_of_samples_per_second = 0
 while (int_num_of_samples_per_second < (num_of_samples_per_second + 1)):
     tick_location_res_vs_asym.append(int_num_of_samples_per_second * (len(total_asymmetry) / num_of_samples_per_second))
-    tick_label_res_vs_asym.append((BCM_bandpass_interval * int_num_of_samples_per_second) + int(1 / BCM_resolution))
+    tick_label_res_vs_asym.append((BCM_sampling_rate_interval * int_num_of_samples_per_second) + int(1 / BCM_resolution))
     int_num_of_samples_per_second = int_num_of_samples_per_second + 1
 
 #graphs:
-fig, axs = plt.subplots(6)
+# fig, axs = plt.subplots(2)
 
-fig.tight_layout()
+# fig.tight_layout()
 
-axs[0].set_xticks(tick_location_trigger)
-axs[0].set_xticklabels(tick_label_trigger)
-axs[0].set_ylabel('Voltage')
-axs[0].set_xlabel('Seconds')
-axs[0].plot(trigger)
-axs[0].set_title('Trigger Pulse')
+# axs[0].set_xticks(tick_location_detector)
+# axs[0].set_xticklabels(tick_label_detector)
+# axs[0].set_ylabel('Voltage')
+# axs[0].set_xlabel('Seconds')
+# axs[0].plot(trigger)
+# axs[0].set_title('Trigger Pulse')
 
 # axs[1].set_xticks(tick_location_detector)
 # axs[1].set_xticklabels(tick_label_detector)
-axs[1].set_ylabel('Voltage')
-axs[1].set_xlabel('Seconds')
-axs[1].plot(storage)
-axs[1].set_title('Detector')
+# axs[1].set_ylabel('Voltage')
+# axs[1].set_xlabel('Seconds')
+# axs[1].plot(storage)
+# axs[1].set_title('Detector')
 
-# axs[2].set_xticks(tick_location_BCM)
-# axs[2].set_xticklabels(tick_label_BCM)
-axs[2].set_ylabel('Voltage')
-axs[2].set_xlabel('Seconds')
-axs[2].plot(BCM_storage)
-axs[2].set_title('BCM')
+# axs[2].set_xticks(tick_location_detector)
+# axs[2].set_xticklabels(tick_label_detector)
+# axs[2].plot(deadtime_detector)
+# axs[2].set_title('Detector Deadtime')
 
-axs[3].set_xticks(tick_location_detector)
-axs[3].set_xticklabels(tick_label_detector)
-axs[3].plot(deadtime_detector)
-axs[3].set_title('Detector Deadtime')
+# axs[3].set_xticks(tick_location_BCM)
+# axs[3].set_xticklabels(tick_label_BCM)
+# axs[3].set_ylabel('Voltage')
+# axs[3].set_xlabel('Seconds')
+# axs[3].plot(BCM_storage)
+# axs[3].set_title('BCM')
 
-axs[4].set_xticks(tick_location_detector)
-axs[4].set_xticklabels(tick_label_detector)
-axs[4].plot(deadtime_BCM)
-axs[4].set_title('BCM Deadtime')
+# axs[4].set_xticks(tick_location_detector)
+# axs[4].set_xticklabels(tick_label_detector)
+# axs[4].plot(deadtime_BCM)
+# axs[4].set_title('BCM Deadtime')
 
-axs[5].set_xticks(tick_location_res_vs_asym)
-axs[5].set_xticklabels(tick_label_res_vs_asym)
-axs[5].set_ylabel('Asymmetry')
-axs[5].set_xlabel('Resolution (Samples / Second)')
-axs[5].plot(total_asymmetry)
-axs[5].set_title('BCM Resolution vs. Total Asymmetry')
+plt.xticks(tick_location_res_vs_asym , tick_label_res_vs_asym)
+plt.ylabel('Asymmetry')
+plt.xlabel('Sampling Rate (Samples / Second)')
+plt.plot(total_asymmetry)
+plt.title('BCM Sampling Rate vs. Total Asymmetry')
 
 plt.show()

@@ -7,17 +7,13 @@ voltage_ripple_positive = 600 #voltage ripple of the power circuitry, measured i
 voltage_ripple_negative = 600 #voltage ripple of the power circuitry, measured in volts
 transient_voltage_positive = 11400 #voltage of the transient, measured in volts
 transient_voltage_negative = 11400 #voltage of the transient, measured in volts
-transient_rt_voltage_positive = 17400 #voltage of the transient, measured in volts
-transient_rt_voltage_negative = 17400 #voltage of the transient, measured in volts
 transient_frequency_positive = 98039 #positive frequency of the transient, measured in hertz
 transient_frequency_negative = 98039 #negative frequency of the transient, measured in hertz
 switching_frequency = 1920 #switching frequency of the power circuitry, measured in hertz
 
 # trigger pulse:
-trigger_duty_cycle = 0.25 #duty cycle of the trigger pulse
 trigger_nominal_voltage = 5 #nominal voltage of the trigger pulse
 trigger_latency = 0 #latency of the trigger pulse ahead of the wave generation, measured in seconds
-trigger_rise_time = 0.00001 #period of the trigger pulse rise time, measured in seconds
 
 #general:
 generation_resolution = 0.0000000001 #resolution with which the wave is generated, measured in radians #1 * 10^-9
@@ -42,5 +38,5 @@ deadtime_shift_detector = 0 #factor by which the deadtime of the detector is mov
 #asymmetry:
 helicity_asymmetry = 0.000000033 #asymmetry from the MOLLER collisions #33 * 10^-9
 
-BCM_bandpass_interval = 100000 #interval by which the bandpass of the BCM increases during systematic error calculations
-BCM_max_bandpass = 1000000 #should be the theoretical maximum for the BCM's bandpass
+BCM_sampling_rate_interval = 100000 #interval by which the bandpass of the BCM increases during systematic error calculations
+BCM_max_sampling_rate = 1000000 #should be the theoretical maximum for the BCM's bandpass

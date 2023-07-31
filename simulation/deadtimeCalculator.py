@@ -40,9 +40,9 @@ def calc_deadtime_detector(): #samples the original wave to create an array mode
 
     while (time2 < (len(storage) * generation_resolution)):
         if (read_current_amplitude_detector(time2) > (nominal_voltage_positive + voltage_ripple_positive)):
-            deadtime_detector.append(1)
+            deadtime_detector.append(10000)
         elif (read_current_amplitude_detector(time2) < (-nominal_voltage_negative - voltage_ripple_negative)):
-            deadtime_detector.append(1)
+            deadtime_detector.append(10000)
         else:
             deadtime_detector.append(0)
         time2 = time2 + generation_resolution
@@ -65,9 +65,9 @@ def calc_deadtime_BCM(): #samples the BCM wave to create an array modelling its 
 
     while (time4 < (len(BCM_storage) * BCM_resolution)):
         if (read_current_amplitude_BCM(time4) > (nominal_voltage_positive + voltage_ripple_positive)):
-            deadtime_BCM.append(1)
+            deadtime_BCM.append(10000)
         elif (read_current_amplitude_BCM(time4) < (-nominal_voltage_negative - voltage_ripple_negative)):
-            deadtime_BCM.append(1)
+            deadtime_BCM.append(10000)
         else:
             deadtime_BCM.append(0)
         time4 = time4 + generation_resolution
@@ -77,3 +77,4 @@ def calc_deadtime_BCM(): #samples the BCM wave to create an array modelling its 
         while (time3 > deadtime_shift_BCM):
             deadtime_BCM.append(0)
             time3 = time3 - BCM_resolution
+

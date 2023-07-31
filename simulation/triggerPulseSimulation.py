@@ -6,7 +6,6 @@ switching_angular_frequency = translationLayer.switching_angular_frequency
 num_of_modules = translationLayer.num_of_modules
 generation_resolution = translationLayer.generation_resolution
 
-trigger_duty_cycle = translationLayer.trigger_duty_cycle
 trigger_nominal_voltage = translationLayer.trigger_nominal_voltage
 trigger_latency = translationLayer.trigger_latency
 trigger_rise_time = translationLayer.trigger_rise_time
@@ -15,7 +14,7 @@ trigger = [] #list used for triggerPulse generation
 
 def calc_rise_time_module(polarity): #calculate the current voltage of the rise time linearly, argument boolean polarity
     num_of_steps = (trigger_rise_time / generation_resolution)
-    delta_voltage_per_step = ((2 *trigger_nominal_voltage) / num_of_steps)
+    delta_voltage_per_step = ((2 * trigger_nominal_voltage) / num_of_steps)
     int_num_of_steps = 0
     while (int_num_of_steps < num_of_steps):
         if (polarity == 1):
@@ -31,11 +30,11 @@ def calc_trigger(): #generate a trigger pulse according to a PWM waveform
         calc_rise_time_module(polarity)
         time = 0
         if (polarity == 1):
-            while (time < (trigger_duty_cycle * (switching_period - trigger_rise_time))):
+            while (time < (switching_period - trigger_rise_time)):
                 trigger.append(polarity * trigger_nominal_voltage)
                 time = time + (generation_resolution)
         else: 
-            while (time < ((1 - trigger_duty_cycle) * (switching_period - trigger_rise_time))):
+            while (time < (switching_period - trigger_rise_time)):
                 trigger.append(polarity * trigger_nominal_voltage)
                 time = time + (generation_resolution)
         polarity = -polarity

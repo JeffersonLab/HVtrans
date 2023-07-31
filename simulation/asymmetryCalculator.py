@@ -64,5 +64,5 @@ def calc_total_asymmetry():
 
     input_asymmetry = (detector_pos_transient_voltage - detector_neg_transient_voltage)
 
-    systematic_error_maybe = (abs((detector_pos_transient_voltage / BCM_pos_transient_voltage) - (detector_neg_transient_voltage / BCM_neg_transient_voltage)) / ((detector_pos_transient_voltage / BCM_pos_transient_voltage) + (detector_neg_transient_voltage / BCM_neg_transient_voltage)))
-    return systematic_error_maybe
+    systematic_error = (abs((detector_pos_transient_voltage / BCM_pos_transient_voltage) - (detector_neg_transient_voltage / BCM_neg_transient_voltage)) / ((detector_pos_transient_voltage / BCM_pos_transient_voltage) + (detector_neg_transient_voltage / BCM_neg_transient_voltage)))
+    return systematic_error
