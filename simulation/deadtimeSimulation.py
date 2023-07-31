@@ -12,13 +12,13 @@ gate_timing_bound_offset = translationLayer.gate_timing_bound_offset
 gate_timing_length_offset = translationLayer.gate_timing_length_offset
 gate_timing_length = translationLayer.gate_timing_length
 
-deadtime_rising_phase_seconds = gate_timing_lower_bound
-deadtime_intermediate_phase_seconds = gate_timing_length
-deadtime_falling_phase_seconds =  (switching_period - (gate_timing_lower_bound + gate_timing_length))
+deadtime_rising_phase_seconds = translationLayer.deadtime_rising_phase_seconds
+deadtime_intermediate_phase_seconds = translationLayer.deadtime_intermediate_phase_seconds
+deadtime_falling_phase_seconds = translationLayer.deadtime_falling_phase_seconds
 
-deadtime_rising_phase_radians = ((deadtime_rising_phase_seconds / switching_period) * (num_of_radians_bounded / num_of_modules))
-deadtime_intermediate_phase_radians = ((deadtime_intermediate_phase_seconds / num_of_seconds_bounded) * (num_of_radians_bounded / num_of_modules))
-deadtime_falling_phase_radians = ((deadtime_falling_phase_seconds / num_of_seconds_bounded) * (num_of_radians_bounded / num_of_modules))
+deadtime_rising_phase_radians = translationLayer.deadtime_rising_phase_radians
+deadtime_intermediate_phase_radians = translationLayer.deadtime_intermediate_phase_radians
+deadtime_falling_phase_radians = translationLayer.deadtime_falling_phase_radians
 
 deadtime = [] #list used for deadtimeSimulation generation
 

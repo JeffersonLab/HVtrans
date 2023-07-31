@@ -35,61 +35,93 @@ def set_time_resolution(lower_bound , upper_bound , interval , array , identifie
     axs[identifier].set_xticks(tick_location)
     axs[identifier].set_xticklabels(tick_label)
 
-fig, axs = plt.subplots(6)
+fig, axs = plt.subplots(2)
 fig.tight_layout()
 
-triggerPulseSimulation.calc_trigger()
-transientSimulation.calc_wave(lower_bound_limit_radian , upper_bound_limit_radian)
-BCMSimulation.calc_bcm()
-detectorSimulation.calc_detector()
-deadtimeSimulation.calc_deadtime()
+#---------------------------------------------------------------------------------------------------------------#
 
-axs[0].set_title('Trigger Pulse')
-axs[0].set_ylabel('Voltage')
-axs[0].set_xlabel('Seconds')
-axs[0].plot(trigger)
-set_time_resolution(lower_bound_limit , upper_bound_limit, graph_time_interval , trigger , 0)
-axs[1].set_title('Light State Generation')
-axs[1].set_ylabel('Voltage')
-axs[1].set_xlabel('Seconds')
-axs[1].plot(storage)
-set_time_resolution(lower_bound_limit , upper_bound_limit, graph_time_interval , storage , 1)
-axs[2].set_title('Beam Current Monitor')
-axs[2].set_ylabel('Voltage')
-axs[2].set_xlabel('Seconds')
-axs[2].plot(bcm)
-set_time_resolution(lower_bound_limit , upper_bound_limit, graph_time_interval , bcm , 2)
-axs[3].set_title('Detector')
-axs[3].set_ylabel('Voltage')
-axs[3].set_xlabel('Seconds')
-axs[3].plot(detector)
-set_time_resolution(lower_bound_limit , upper_bound_limit, graph_time_interval , detector , 3)
-axs[4].set_title('Deadtime')
-axs[4].set_ylabel('State')
-axs[4].set_xlabel('Seconds')
-axs[4].plot(deadtime)
-set_time_resolution(lower_bound_limit , upper_bound_limit, graph_time_interval , deadtime , 4)
+# triggerPulseSimulation.calc_trigger()
+# transientSimulation.calc_wave(lower_bound_limit_radian , upper_bound_limit_radian)
+# BCMSimulation.calc_bcm()
+# detectorSimulation.calc_detector()
+# deadtimeSimulation.calc_deadtime()
 
-lower_bound = 0
-upper_bound = 500000
-interval = 5000
-graph_interval = 50000
+# axs[0].set_title('Trigger Pulse')
+# axs[0].set_ylabel('Voltage')
+# axs[0].set_xlabel('Seconds')
+# axs[0].plot(trigger)
+# set_time_resolution(lower_bound_limit , upper_bound_limit, graph_time_interval , trigger , 0)
+# axs[1].set_title('Light State Generation')
+# axs[1].set_ylabel('Voltage')
+# axs[1].set_xlabel('Seconds')
+# axs[1].plot(storage)
+# set_time_resolution(lower_bound_limit , upper_bound_limit, graph_time_interval , storage , 1)
+# axs[2].set_title('Beam Current Monitor')
+# axs[2].set_ylabel('Voltage')
+# axs[2].set_xlabel('Seconds')
+# axs[2].plot(bcm)
+# set_time_resolution(lower_bound_limit , upper_bound_limit, graph_time_interval , bcm , 2)
+# axs[3].set_title('Detector')
+# axs[3].set_ylabel('Voltage')
+# axs[3].set_xlabel('Seconds')
+# axs[3].plot(detector)
+# set_time_resolution(lower_bound_limit , upper_bound_limit, graph_time_interval , detector , 3)
+# axs[4].set_title('Deadtime')
+# axs[4].set_ylabel('State')
+# axs[4].set_xlabel('Seconds')
+# axs[4].plot(deadtime)
+# set_time_resolution(lower_bound_limit , upper_bound_limit, graph_time_interval , deadtime , 4)
+
+#---------------------------------------------------------------------------------------------------------------#
+
+bcm_resolution_lower_bound = 0 #lower bound of the bcm_resolution iteration, measured in hertz
+bcm_resolution_upper_bound = 1000000 #upper bound of the bcm_resolution iteration, measured in hertz
+bcm_resolution_interval = 10000 #increment value of the bcm_resolution calculation, measured in hertz
+bcm_resolution_graph_interval = 100000 #graph interval for the bcm_resolution vs. asymmetry graph, measured in hertz
+
+# detector_resolution_lower_bound = 0 #lower bound of the detector_resolution iteration, measured in hertz
+# detector_resolution_upper_bound = 1000000 #upper bound of the detector_resolution iteration, measured in hertz
+# detector_resolution_interval = 10000 #increment value of the detector_resolution calculation, measured in hertz
+# detector_resolution_graph_interval = 100000 #graph interval for the detector_resolution vs. asymmetry graph, measured in hertz
 
 bcm_sampling_rate = translationLayer.bcm_sampling_rate
+detector_sampling_rate = translationLayer.detector_sampling_rate
 
-asymmetryCalculation.calc_asymmetry(lower_bound , upper_bound , interval)
-axs[5].set_title('BCM Resolution vs. Asymmetry')
-axs[5].set_ylabel('Asymmetry')
-axs[5].set_xlabel('BCM Resolution')
-axs[5].plot(asymmetry)
-set_time_resolution(lower_bound , upper_bound , graph_interval , asymmetry , 5)
+asymmetryCalculation.calc_asymmetry(bcm_resolution_lower_bound , bcm_resolution_upper_bound , bcm_resolution_interval)
+axs[1].set_title('BCM Resolution vs. Asymmetry')
+axs[1].set_ylabel('Asymmetry')
+axs[1].set_xlabel('BCM Resolution')
+axs[1].plot(asymmetry)
+set_time_resolution(bcm_resolution_lower_bound , bcm_resolution_upper_bound , bcm_resolution_graph_interval , asymmetry , 1)
 
-total_asymmetry = asymmetryCalculation.read_current_asymmetry(bcm_sampling_rate , lower_bound , upper_bound , interval)
+# bcm_frequency_response_lower_bound = 0
+# bcm_frequency_response_upper_bound = 1000000
+# bcm_frequency_response_interval = 10000
+# bcm_frequency_response_graph_interval = 100000
+
+# detector_frequency_response_lower_bound = 0
+# detector_frequency_response_upper_bound = 1000000
+# detector_frequency_response_interval = 10000
+# detector_frequency_response_graph_interval = 100000
+
+# bcm_frequency_response = translationLayer.bcm_frequency_cutoff
+# detector_frequency_response = translationLayer.detector_frequency_cutoff
+
+# gate_timing_lower_bound = 0 
+# gate_timing_upper_bound = 10
+# gate_timing_interval = 1
+# gate_timing_graph_interval = 5
+
+# gate_timing_length_offset = translationLayer.gate_timing_length_offset
+
+total_asymmetry = asymmetryCalculation.read_current_asymmetry(bcm_sampling_rate , bcm_resolution_lower_bound , bcm_resolution_upper_bound , bcm_resolution_interval)
 physics_asymmetry = translationLayer.input_asymmetry
 systematic_asymmetry = total_asymmetry - physics_asymmetry
 
 print('physics asymmetry: ' + str(physics_asymmetry))
 print('systematic asymmetry: ' + str(systematic_asymmetry))
 print('total asymmetry: ' + str(total_asymmetry))
+
+#---------------------------------------------------------------------------------------------------------------#
 
 plt.show()

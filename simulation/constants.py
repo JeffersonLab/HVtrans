@@ -29,12 +29,12 @@ trigger_latency = 0 #latency of the trigger pulse ahead of the wave generation, 
 trigger_rise_time = 0.00005 #period of the trigger pulse rise time, measured in seconds
 
 #BCM Simulation:
-bcm_sampling_rate = 150000 #could approach 150ksps with modification #sampling rate of the beam current monitor, measured in samples per second
-bcm_frequency_cutoff = 5000000 #beam current monitor frequency cutoff, measured in hertz
+bcm_sampling_rate = 10000 #could approach 150ksps with modification #sampling rate of the beam current monitor, measured in samples per second
+bcm_frequency_cutoff = 1000000 #5000000 #beam current monitor frequency cutoff, measured in hertz
 
 #Detector Simulation:
-detector_sampling_rate = 300000 #sampling rate of the detector, measured in samples per second
-detector_frequency_cutoff = 5000000 #detector frequency cutoff, measured in hertz
+detector_sampling_rate = 600000 #sampling rate of the detector, measured in samples per second
+detector_frequency_cutoff = 1000000 #5000000 #detector frequency cutoff, measured in hertz
 
 #Deadtime Simulation:
 gate_timing_lower_bound = 0.00005 #expected lower bound of the deadtime, measured in seconds

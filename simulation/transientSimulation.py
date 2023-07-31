@@ -150,6 +150,3 @@ def calc_wave(lower_bound_limit_radian , upper_bound_limit_radian): #iterate cal
 def read_current_amplitude(radian_location): #returns the current amplitude of the wave at a given radian location, parameter radian_location in radians
     current_amplitude = storage[int(radian_location / generation_resolution)]
     return current_amplitude
-
-#add interpolation function to uncompress calc_wave() due to 2pi conditional limit
-#fix spike contained within first transient

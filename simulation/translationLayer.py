@@ -10,6 +10,7 @@ nominal_voltage_positve = constants.nominal_voltage_positve #positive nominal vo
 nominal_voltage_negative = constants.nominal_voltage_negative #negative nominal voltage of the wave, measured in volts
 nominal_frequency_positive = constants.nominal_frequency_positive #positive wave frequency, measured in hertz
 nominal_frequency_negative = constants.nominal_frequency_negative #negative wave frequency, measured in hertz
+nominal_frequency_average = ((nominal_frequency_positive + nominal_frequency_negative) / 2) #average nominal frequency, measured in hertz
 voltage_ripple_positive = constants.voltage_ripple_positive #positive voltage ripple in the wave at nominal voltage, measured in volts
 voltage_ripple_negative = constants.voltage_ripple_negative #negative voltage ripple in the wave at nominal voltage, measured in volts
 transient_voltage_positive = constants.transient_voltage_positive #positive transient voltage of the wave, measured in volts
@@ -35,7 +36,8 @@ transient_rise_time_positive = constants.transient_rise_time_positive #positve t
 transient_rise_time_negative = constants.transient_rise_time_negative #negative transient rise time, measured in seconds
 transient_rise_time_radian_positive = transient_rise_time_positive * transient_angular_frequency_positive #positive transient rise time, converted to radians according to the nominal angular frequency
 transient_rise_time_radian_negative = transient_rise_time_negative * transient_angular_frequency_negative #negative transient rise time, converted to radians according to the nominal angular frequency
-switching_period_radian = switching_period * switching_angular_frequency
+
+switching_period_radian = switching_period * switching_angular_frequency #period of the switching, measured in radians
 
 #general:
 num_of_phases_positive = (switching_period - transient_period_positive) / nominal_period_positive #positive number of nominal phases per wave module
@@ -44,7 +46,7 @@ num_of_phases = num_of_phases_positive + num_of_phases_negative #total number of
 num_of_modules = constants.num_of_modules #number of wave modules
 num_of_modules_positive = round(num_of_modules / 2) #number of positive modules
 num_of_modules_negative = int(num_of_modules / 2) #number of negative modules
-num_of_radian_per_module = switching_period * switching_angular_frequency
+num_of_radian_per_module = switching_period * switching_angular_frequency #total number of radians per module
 generation_resolution = constants.generation_resolution #resolution with which the wave module is generated, measured in radians
 graph_time_interval = constants.graph_time_interval #interval for the x-axis on the graph, measured in seconds
 lower_bound_limit = constants.lower_bound_limit #horizontal lower bound limit of the graph, measured in seconds
@@ -78,10 +80,18 @@ gate_timing_lower_bound = constants.gate_timing_lower_bound #expected lower boun
 gate_timing_upper_bound = constants.gate_timing_upper_bound #expected length of the deadtime, measured in seconds
 gate_timing_bound_offset = constants.gate_timing_bound_offset #offset in the deadtime lower bound, measured in seconds
 gate_timing_length_offset = constants.gate_timing_length_offset #offset in the deadtime length, measured in seconds
-gate_timing_length = gate_timing_upper_bound - gate_timing_lower_bound
+gate_timing_length = gate_timing_upper_bound - gate_timing_lower_bound #length of the gate timing, measured in seconds
+
+deadtime_rising_phase_seconds = gate_timing_lower_bound #length of the zero state of the deadtime prior to transition, measured in seconds
+deadtime_intermediate_phase_seconds = gate_timing_length #length of the one state of the deadtime, measured in seconds
+deadtime_falling_phase_seconds =  (switching_period - (gate_timing_lower_bound + gate_timing_length)) #length of the zero state of the deadtime following transition, measured in seconds
+
+deadtime_rising_phase_radians = ((deadtime_rising_phase_seconds / switching_period) * (num_of_radians_bounded / num_of_modules)) #length of the zero state of the deadtime prior to transition, measured in radians
+deadtime_intermediate_phase_radians = ((deadtime_intermediate_phase_seconds / num_of_seconds_bounded) * (num_of_radians_bounded / num_of_modules)) #length of the one state of the deadtime, measured in radians
+deadtime_falling_phase_radians = ((deadtime_falling_phase_seconds / num_of_seconds_bounded) * (num_of_radians_bounded / num_of_modules)) #length of the zero state of the deadtime following transition, measured in radians
 
 #asymmetry
-input_asymmetry = constants.input_asymmetry
+input_asymmetry = constants.input_asymmetry #asymmetry due to physics properties
 
 #constants:
 e = 2.71828 #18284590452353602874713527 #euler's number constant

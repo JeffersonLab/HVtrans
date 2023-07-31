@@ -3,14 +3,13 @@ import transientSimulation
 
 nominal_frequency_positive = translationLayer.nominal_frequency_positive
 nominal_frequency_negative = translationLayer.nominal_frequency_negative
+nominal_frequency_average = translationLayer.nominal_frequency_average
 
 bcm_sampling_rate = translationLayer.bcm_sampling_rate
 bcm_frequency_cutoff = translationLayer.bcm_frequency_cutoff
 num_of_seconds_bounded = translationLayer.num_of_seconds_bounded
 num_of_radians_bounded = translationLayer.num_of_radians_bounded
 e = translationLayer.e
-
-nominal_frequency_average = ((nominal_frequency_positive + nominal_frequency_negative) / 2)
 
 bcm = [] #list used for BCMSimulation generation
 
