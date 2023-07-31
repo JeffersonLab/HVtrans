@@ -12,7 +12,7 @@ detector = detectorSimulation.detector
 
 asymmetry = [] #list used for asymmetryCalculation
 
-def calc_asymmetry(lower_bound , upper_bound , interval): #add a variable_to_vary and/or location_to_measure as potential parameters
+def calc_asymmetry(lower_bound , upper_bound , interval): #calculates the asymmetry of the wave due to systematic error vs. a variable over a defined interval, parameter lower_bound in variable unit, upper_bound in variable unit, and interval in variable unit
     location_to_measure_radian = 5 #fixed location to measure in radians
     translationLayer.detector_sampling_rate = lower_bound #set variable to iterate
     while (translationLayer.detector_sampling_rate < upper_bound): #set variable to iterate
@@ -31,7 +31,7 @@ def calc_asymmetry(lower_bound , upper_bound , interval): #add a variable_to_var
 
         translationLayer.detector_sampling_rate += interval #set variable to iterate
 
-def read_current_asymmetry(parameter_value, lower_bound , upper_bound , interval):
+def read_current_asymmetry(parameter_value, lower_bound , upper_bound , interval): #reads the current asymmetry for a given variable value, parameter parameter_value in variable unit, lower_bound in variable unit, upper_bound in variable unit, and interval in variable unit
     index = int((parameter_value / interval) - (lower_bound / interval))
     current_asymmetry = asymmetry[index]
     return current_asymmetry

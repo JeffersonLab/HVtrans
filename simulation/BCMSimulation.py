@@ -19,7 +19,7 @@ def calc_bcm_frequency_response(frequency): #calculates a scalar multiplier for 
     multiplier = (-1 / pow(e , (-frequency_mhz + bcm_frequency_cutoff_mhz))) + 1 #decay funtion to determine the beam current monitor frequency response, currently (-1 / (e ^ (-x + frequency_cutoff))) + 1 where x is in megahertz and probability is a decimal between zero and one
     return multiplier
 
-def calc_bcm():
+def calc_bcm(): #calculates the beam current monitor graph by reading from the transientSimulation array according to bcm_resolution
     num_of_calcs = calc_bcm_frequency_response(nominal_frequency_average) * num_of_seconds_bounded * bcm_sampling_rate #number of beam current monitor measurements over bounded interval
     bcm_resolution = num_of_radians_bounded / num_of_calcs #beam current monitor resolution in radians
     time = 0

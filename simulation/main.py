@@ -22,23 +22,25 @@ num_of_seconds_bounded = translationLayer.num_of_seconds_bounded
 lower_bound_limit_radian = translationLayer.lower_bound_limit_radian
 upper_bound_limit_radian = translationLayer.upper_bound_limit_radian
 
-def set_time_resolution(lower_bound , upper_bound , interval , array , identifier): #sets the time resolution for the x-axis of the graph in seconds, parameters interval in seconds, array in format list, and identifier in scalar
-    tick_location = [] #list to store the tick locations on the graph
-    tick_label = [] #list to store the tick labels on the graph
-    int_counter = lower_bound
-    while (int_counter < (upper_bound + interval)):
-        tick_location.append(int_counter * (len(array) / (upper_bound - lower_bound)))
-        num_of_decimal_places = 5 #sets the number of decimal places in graph labels
-        rounded_label = round(int_counter, num_of_decimal_places)
-        tick_label.append(rounded_label)
-        int_counter += interval
-    axs[identifier].set_xticks(tick_location)
-    axs[identifier].set_xticklabels(tick_label)
-
-fig, axs = plt.subplots(2)
-fig.tight_layout()
-
 #---------------------------------------------------------------------------------------------------------------#
+
+#uncomment this block to graph the triggerPulse, transientSimulation, BCMSimulation, detectorSimulation, and deadtimeSimulation
+
+# def set_time_resolution(lower_bound , upper_bound , interval , array , identifier): #sets the time resolution for the x-axis of the graph in seconds, parameters interval in seconds, array in format list, and identifier in scalar
+#     tick_location = [] #list to store the tick locations on the graph
+#     tick_label = [] #list to store the tick labels on the graph
+#     int_counter = lower_bound
+#     while (int_counter < (upper_bound + interval)):
+#         tick_location.append(int_counter * (len(array) / (upper_bound - lower_bound)))
+#         num_of_decimal_places = 5 #sets the number of decimal places in graph labels
+#         rounded_label = round(int_counter, num_of_decimal_places)
+#         tick_label.append(rounded_label)
+#         int_counter += interval
+#     axs[identifier].set_xticks(tick_location)
+#     axs[identifier].set_xticklabels(tick_label)
+
+# fig, axs = plt.subplots(5)
+# fig.tight_layout()
 
 # triggerPulseSimulation.calc_trigger()
 # transientSimulation.calc_wave(lower_bound_limit_radian , upper_bound_limit_radian)
@@ -74,45 +76,34 @@ fig.tight_layout()
 
 #---------------------------------------------------------------------------------------------------------------#
 
+#uncomment this block to graph a predefined variable, set in asymmetryCalculation, vs. asymmetry
+
+def set_time_resolution(lower_bound , upper_bound , interval , array): #sets the time resolution for the x-axis of the graph in seconds, parameters interval in seconds, array in format list, and identifier in scalar
+    tick_location = [] #list to store the tick locations on the graph
+    tick_label = [] #list to store the tick labels on the graph
+    int_counter = lower_bound
+    while (int_counter < (upper_bound + interval)):
+        tick_location.append(int_counter * (len(array) / (upper_bound - lower_bound)))
+        num_of_decimal_places = 5 #sets the number of decimal places in graph labels
+        rounded_label = round(int_counter, num_of_decimal_places)
+        tick_label.append(rounded_label)
+        int_counter += interval
+    plt.xticks(tick_location , tick_label)
+    
 bcm_resolution_lower_bound = 0 #lower bound of the bcm_resolution iteration, measured in hertz
 bcm_resolution_upper_bound = 1000000 #upper bound of the bcm_resolution iteration, measured in hertz
 bcm_resolution_interval = 10000 #increment value of the bcm_resolution calculation, measured in hertz
 bcm_resolution_graph_interval = 100000 #graph interval for the bcm_resolution vs. asymmetry graph, measured in hertz
 
-# detector_resolution_lower_bound = 0 #lower bound of the detector_resolution iteration, measured in hertz
-# detector_resolution_upper_bound = 1000000 #upper bound of the detector_resolution iteration, measured in hertz
-# detector_resolution_interval = 10000 #increment value of the detector_resolution calculation, measured in hertz
-# detector_resolution_graph_interval = 100000 #graph interval for the detector_resolution vs. asymmetry graph, measured in hertz
-
 bcm_sampling_rate = translationLayer.bcm_sampling_rate
 detector_sampling_rate = translationLayer.detector_sampling_rate
 
 asymmetryCalculation.calc_asymmetry(bcm_resolution_lower_bound , bcm_resolution_upper_bound , bcm_resolution_interval)
-axs[1].set_title('BCM Resolution vs. Asymmetry')
-axs[1].set_ylabel('Asymmetry')
-axs[1].set_xlabel('BCM Resolution')
-axs[1].plot(asymmetry)
-set_time_resolution(bcm_resolution_lower_bound , bcm_resolution_upper_bound , bcm_resolution_graph_interval , asymmetry , 1)
-
-# bcm_frequency_response_lower_bound = 0
-# bcm_frequency_response_upper_bound = 1000000
-# bcm_frequency_response_interval = 10000
-# bcm_frequency_response_graph_interval = 100000
-
-# detector_frequency_response_lower_bound = 0
-# detector_frequency_response_upper_bound = 1000000
-# detector_frequency_response_interval = 10000
-# detector_frequency_response_graph_interval = 100000
-
-# bcm_frequency_response = translationLayer.bcm_frequency_cutoff
-# detector_frequency_response = translationLayer.detector_frequency_cutoff
-
-# gate_timing_lower_bound = 0 
-# gate_timing_upper_bound = 10
-# gate_timing_interval = 1
-# gate_timing_graph_interval = 5
-
-# gate_timing_length_offset = translationLayer.gate_timing_length_offset
+plt.title('BCM Resolution vs. Asymmetry')
+plt.ylabel('Asymmetry')
+plt.xlabel('BCM Resolution')
+plt.plot(asymmetry)
+set_time_resolution(bcm_resolution_lower_bound , bcm_resolution_upper_bound , bcm_resolution_graph_interval , asymmetry)
 
 total_asymmetry = asymmetryCalculation.read_current_asymmetry(bcm_sampling_rate , bcm_resolution_lower_bound , bcm_resolution_upper_bound , bcm_resolution_interval)
 physics_asymmetry = translationLayer.input_asymmetry

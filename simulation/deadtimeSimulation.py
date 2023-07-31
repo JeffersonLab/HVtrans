@@ -22,7 +22,7 @@ deadtime_falling_phase_radians = translationLayer.deadtime_falling_phase_radians
 
 deadtime = [] #list used for deadtimeSimulation generation
 
-def calc_deadtime_module():
+def calc_deadtime_module(): #calculates a deadtime module based off the rising, intermediate, and falling phase limits
     time = 0 
     while(time < deadtime_rising_phase_radians):
         deadtime.append(0)
@@ -36,7 +36,7 @@ def calc_deadtime_module():
         deadtime.append(0)
         time = time + generation_resolution 
 
-def calc_deadtime():
+def calc_deadtime(): #calculates the deadtime graph by calling calc_deadtime_module() a defined number of times
     int_num_of_modules = 0
     while(int_num_of_modules < num_of_modules):
         calc_deadtime_module()

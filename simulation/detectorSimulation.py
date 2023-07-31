@@ -19,7 +19,7 @@ def calc_detector_frequency_response(frequency): #calculates a scalar multiplier
     multiplier = (-1 / pow(e , (-frequency_mhz + detector_frequency_cutoff_mhz))) + 1 #decay funtion to determine the detector frequency response, currently (-1 / (e ^ (-x + frequency_cutoff))) + 1 where x is in megahertz and probability is a decimal between zero and one
     return multiplier
 
-def calc_detector():
+def calc_detector(): #calculates the detector graph by reading from the transientSimulation array according to detector_resolution
     num_of_calcs = calc_detector_frequency_response(nominal_frequency_average) * num_of_seconds_bounded * detector_sampling_rate #number of detector measurements over bounded interval
     detector_resolution = num_of_radians_bounded / num_of_calcs #detector resolution in radians
     time = 0
